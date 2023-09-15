@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ProjectNT118</string>
+    <string name="welcome_back_text">Welcome Back</string>
+    <string name="welcome_text">Welcome</string>
+    <string name="login_description_text">Login back into your account</string>
+    <string name="login_text">Log In</string>
+    <string name="signup_text">Sign Up</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">LOGIN</string>
+    <string name="signup_button">SIGNUP</string>
+    <string name="notRegistered_button">Not yet registered? SIGNUP now</string>
+    <string name="registered_button">Registered? LOGIN now</string>
+
+</resources>
