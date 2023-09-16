@@ -33,7 +33,7 @@
                 android:text="@string/welcome_text"
                 android:textAlignment="textStart"
                 android:textColor="@color/purple"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -42,7 +42,7 @@
                 android:background="@drawable/login_signup_bg"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="24dp"
+                android:padding="27dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="30dp">
 
@@ -58,7 +58,7 @@
                     android:id="@+id/signUpUsername"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/custom_edittext"
                     android:drawablePadding="8dp"
                     android:hint="@string/username_hint"
@@ -85,7 +85,7 @@
                     android:id="@+id/signUpButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/purple"
                     android:text="@string/signup_button"
                     android:textSize="18sp"
@@ -96,16 +96,23 @@
 
     </androidx.cardview.widget.CardView>
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registered_text"
+        android:textSize="17sp"
+        android:textColor="@color/white"/>
+
     <Button
         android:id="@+id/registeredButton"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:padding="8dp"
-        android:text="@string/registered_button"
+        android:text="@string/login_button"
         android:textAlignment="center"
-        android:textColor="@color/purple"
+        android:textColor="@color/white"
         android:textSize="17sp" />
 
 </LinearLayout>
