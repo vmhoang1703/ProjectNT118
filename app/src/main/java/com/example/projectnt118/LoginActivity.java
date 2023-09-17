@@ -20,8 +20,8 @@ public class LoginActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        usernameEditText = findViewById(R.id.loginUsername);
-        passwordEditText = findViewById(R.id.loginPassword);
+        usernameEditText = findViewById(R.id.loginUsernameEditText);
+        passwordEditText = findViewById(R.id.loginPasswordEditText);
         Button loginButton = findViewById(R.id.loginButton);
         Button notRegisteredButton = findViewById(R.id.notRegisteredButton);
 

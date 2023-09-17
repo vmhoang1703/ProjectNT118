@@ -20,8 +20,8 @@ public class SignupActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        usernameEditText = findViewById(R.id.signUpUsername);
-        passwordEditText = findViewById(R.id.signUpPassword);
+        usernameEditText = findViewById(R.id.signupUsernameEditText);
+        passwordEditText = findViewById(R.id.signupPasswordEditText);
         Button signUpButton = findViewById(R.id.signUpButton);
         Button registeredButton = findViewById(R.id.registeredButton);
 
