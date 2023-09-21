@@ -1,4 +1,4 @@
-package com.example.projectnt118;
+package com.example.projectnt118.Activity;
 
 public class User {
     private int id;

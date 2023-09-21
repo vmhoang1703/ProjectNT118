@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+  <Button
+      android:id="@+id/languageButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/button_background_bright_green"
+      android:text="Change Language"
+      android:textColor="@color/teal200"
+      android:textSize="20sp" />
+
+  <Button
+      android:id="@+id/signInButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/button_background_bright_blue"
+      android:text="Sign In"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+
+  <Button
+      android:id="@+id/signUpButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/button_background_bright_red"
+      android:text="Sign Up"
+      android:textColor="@color/purpleDark"
+      android:textSize="20sp" />
+
+  <Button
+      android:id="@+id/continueWithGoogleButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:background="@drawable/button_background_white"
+      android:text="Continue with Google"
+      android:textColor="@android:color/black"
+      android:textSize="20sp" />
+
+  <Button
+      android:id="@+id/forgotPasswordButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/button_background_light_gray"
+      android:text="Forgot Password?"
+      android:textColor="@android:color/black"
+      android:textSize="20sp" />
+
+</LinearLayout>

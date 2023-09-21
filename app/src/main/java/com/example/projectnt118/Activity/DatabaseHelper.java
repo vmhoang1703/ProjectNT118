@@ -1,4 +1,4 @@
-package com.example.projectnt118;
+package com.example.projectnt118.Activity;
 
 import android.content.ContentValues;
 import android.content.Context;

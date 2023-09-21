@@ -1,4 +1,4 @@
-package com.example.projectnt118;
+package com.example.projectnt118.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.projectnt118.R;
 
 public class SignupActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;
