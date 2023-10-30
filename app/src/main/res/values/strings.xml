@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NT118Project</string>
+    <string name="LinkToRegister">
+        Not a member?
+        <a href="">
+            <u>Sign up now</u>
+        </a>
+    </string>
+    <string name="ForgotPassword">
+        <a href="">
+            <u>Forgot your password?</u>
+        </a>
+    </string>
+</resources>
