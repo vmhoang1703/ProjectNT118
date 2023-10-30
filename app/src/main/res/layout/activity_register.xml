@@ -23,6 +23,7 @@
         android:layout_marginTop="-97dp" />
 
     <ImageView
+        android:id="@+id/back_arrow"
         android:layout_width="30dp"
         android:layout_height="25dp"
         android:src="@drawable/arrow"
@@ -32,6 +33,7 @@
         android:layout_marginTop="15dp"/>
 
     <TextView
+        android:id="@+id/back_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
