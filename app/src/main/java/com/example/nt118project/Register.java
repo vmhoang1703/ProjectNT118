@@ -23,7 +23,7 @@ import java.util.Calendar;
 public class Register extends AppCompatActivity {
     private ImageView back;
     private TextView backText;
-    private EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
+    public EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
     private TextView signupBtn;
 
     private FirebaseAuth mAuth;
@@ -69,6 +69,7 @@ public class Register extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 confirmPassword = String.valueOf(editTextConfirmPassword.getText());
+                MainActivity.setValueFromCurrentClass(username, email, password, confirmPassword);
 
                 if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
                     Toast.makeText(Register.this, "All fields are required", Toast.LENGTH_SHORT).show();
