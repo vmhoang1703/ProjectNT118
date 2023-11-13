@@ -1,15 +1,59 @@
 <resources>
     <string name="app_name">NT118Project</string>
-    <string name="LinkToRegister">
+    <string name="signin_text_en">SIGN IN</string>
+    <string name="signin_text_vn">ĐĂNG NHẬP</string>
+    <string name="wc_text_en">To have better experience</string>
+    <string name="wc_text_vn">Để có trải nghiệm tốt hơn</string>
+    <string name="gg_signin_en">CONTINUE WITH GOOGLE</string>
+    <string name="gg_signin_vn">TIẾP TỤC VỚI GOOGLE</string>
+    <string name="ac_signin_en">SIGN IN WITH ACCOUNT</string>
+    <string name="ac_signin_vn">ĐĂNG NHẬP VỚI TÀI KHOẢN</string>
+    <string name="or_text_en">OR</string>
+    <string name="or_text_vn">HOẶC</string>
+    <string name="LinkToRegister_en">
         Not a member?
         <a href="">
             <u>Sign up now</u>
         </a>
     </string>
-    <string name="ForgotPassword">
+    <string name="LinkToRegister_vn">
+        Chưa có tài khoản?
+        <a href="">
+            <u>Đăng ký ngay</u>
+        </a>
+    </string>
+    <string name="back_en">Back</string>
+    <string name="back_vn">Trở lại</string>
+    <string name="welcome_text_en">Welcome,</string>
+    <string name="welcome_text_vn">Chào mừng,</string>
+    <string name="signup_text_en">Sign up!</string>
+    <string name="signup_text_vn">Đăng ký!</string>
+    <string name="username_text_en">Username</string>
+    <string name="username_text_vn">Tên đăng nhập</string>
+    <string name="email_text">Email</string>
+    <string name="password_text_en">Password</string>
+    <string name="password_text_vn">Mật khẩu</string>
+    <string name="confirm_password_text_en">Confirm password</string>
+    <string name="confirm_password_text_vn">Xác nhận mật khẩu</string>
+    <string name="signup_upper_en">SIGN UP</string>
+    <string name="signup_upper_vn">ĐĂNG KÝ</string>
+    <string name="type_hint_en">Type...</string>
+    <string name="type_hint_vn">Nhập...</string>
+    <string name="welcome_back_text_en">Welcome back,</string>
+    <string name="welcome_back_text_vn">Chào mừng trở lại,</string>
+    <string name="signin1_text_en">Sign in!</string>
+    <string name="signin1_text_vn">Đăng nhập!</string>
+    <string name="ForgotPassword_en">
         <a href="">
             <u>Forgot your password?</u>
         </a>
     </string>
+    <string name="ForgotPassword_vn">
+        <a href="">
+            <u>Quên mật khẩu?</u>
+        </a>
+    </string>
+    <string name="signin_upper_en">SIGN IN</string>
+    <string name="signin_upper_vn">ĐĂNG NHẬP</string>
     <string name="default_web_client_id">393644215199-ndocj7fn069cg9ql2ns5q0kip99n2fh8.apps.googleusercontent.com</string>
 </resources>

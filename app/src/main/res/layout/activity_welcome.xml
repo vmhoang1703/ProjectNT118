@@ -6,12 +6,12 @@
 
     <ImageButton
         android:id="@+id/languageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_centerHorizontal="true"
         android:background="@color/white"
         android:scaleType="centerInside"
-        android:src="@drawable/vietnamese"
+        android:src="@drawable/english"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true" />
 
@@ -32,7 +32,7 @@
         android:layout_above="@+id/welcome_text"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
-        android:text="SIGN IN"
+        android:text="@string/signin_text_en"
         android:textSize="35dp"
         android:textStyle="bold" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To have better experience"
+        android:text="@string/wc_text_en"
         android:textSize="20dp"
         android:layout_above="@+id/googleSignIn"
         android:layout_marginBottom="50dp"
@@ -59,16 +59,16 @@
 
     <TextView
         android:id="@+id/googleSignIn"
-        android:layout_width="270dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="CONTINUE WITH GOOGLE"
+        android:text="@string/gg_signin_en"
         android:textSize="15dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:background="@drawable/shadowbtn"
-        android:elevation="20dp"
+        android:elevation="10dp"
         android:paddingLeft="45dp"
         android:layout_above="@+id/email_signin"
         android:layout_marginBottom="30dp"/>
@@ -77,10 +77,10 @@
     <TextView
         android:id="@+id/email_signin"
         android:layout_above="@+id/or_text"
-        android:layout_width="240dp"
+        android:layout_width="270dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:text="SIGN IN WITH ACCOUNT"
+        android:text="@string/ac_signin_en"
         android:textSize="15dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
@@ -91,7 +91,7 @@
         android:id="@+id/or_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OR"
+        android:text="@string/or_text_en"
         android:textSize="20dp"
         android:layout_above="@+id/linktoregister"
         android:layout_centerHorizontal="true"
@@ -106,7 +106,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="80dp"
-        android:text="@string/LinkToRegister"
+        android:text="@string/LinkToRegister_en"
         android:textSize="18dp"
         android:textAlignment="center" />
 
