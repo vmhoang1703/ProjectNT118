@@ -5,12 +5,12 @@
 
     <ImageButton
         android:id="@+id/languageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_centerHorizontal="true"
         android:background="@color/white"
         android:scaleType="centerInside"
-        android:src="@drawable/vietnamese"
+        android:src="@drawable/english"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"/>
@@ -40,7 +40,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="70dp"
         android:layout_marginTop="12dp"
-        android:text="Back"
+        android:text="@string/back_en"
         android:textColor="@color/white"
         android:textSize="23dp" />
 
@@ -52,19 +52,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="75dp"
-        android:text="Welcome back,"
+        android:text="@string/welcome_back_text_en"
         android:textColor="@color/white"
         android:textSize="23dp" />
 
     <TextView
-        android:id="@+id/signup_text"
+        android:id="@+id/signin_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="105dp"
-        android:text="Sign in!"
+        android:text="@string/signin1_text_en"
         android:textColor="@color/white"
         android:textSize="35dp"
         android:textStyle="bold"/>
@@ -78,7 +78,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="5dp"
-        android:text="Email"
+        android:text="@string/email_text"
         android:textSize="18dp" />
 
     <ImageView
@@ -115,7 +115,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="5dp"
-        android:text="Password"
+        android:text="@string/password_text_en"
         android:textSize="18dp" />
 
 
@@ -146,7 +146,7 @@
         android:id="@+id/forgotpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ForgotPassword"
+        android:text="@string/ForgotPassword_en"
         android:layout_above="@+id/signin_btn"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
@@ -161,7 +161,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="250dp"
-        android:text="SIGN IN"
+        android:text="@string/signin_upper_en"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="20dp"
