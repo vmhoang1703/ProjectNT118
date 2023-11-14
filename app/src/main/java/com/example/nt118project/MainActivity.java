@@ -52,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
         webView.clearCache(true);
         webView.clearHistory();
         String token = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoREkwZ2hyVlJvaE5zVy1wSXpZeDBpT2lHMzNlWjJxV21sRk4wWGE1dWkwIn0.eyJleHAiOjE2OTk5MjMxNDIsImlhdCI6MTY5OTkyMzA4MiwianRpIjoiMGM0ZDEyNWMtNjcxOC00NzU2LWJmODItZGU0YjY4YTdlN2JkIiwiaXNzIjoiaHR0cHM6Ly91aW90Lml4eGMuZGV2L2F1dGgvcmVhbG1zL21hc3RlciIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1Yzg3ZWU2ZS0xOGYwLTQzMTgtYjYyZS1mMzI4OGU4MzliMmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJvcGVucmVtb3RlIiwic2Vzc2lvbl9zdGF0ZSI6IjZhY2RmMGZmLTZhMzctNDQyNy04YTM4LTMxZDQzNWQzMWRjMyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly91aW90Lml4eGMuZGV2Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLW1hc3RlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI2YWNkZjBmZi02YTM3LTQ0MjctOGEzOC0zMWQ0MzVkMzFkYzMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJUcmlldSBEaW5oIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiMjE1MjE1NzYiLCJnaXZlbl9uYW1lIjoiVHJpZXUiLCJmYW1pbHlfbmFtZSI6IkRpbmgiLCJlbWFpbCI6InRyaWV1YnVpMDAzQGdtYWlsLmNvbSJ9.UmnH_WE4HYu3Si_8v0SfIeeBt3EsXAJxIWzMeBafRWaYJZvxGutjdLB2mdOpnaOaKWhH0ioXKOvKnBisfRXG47-PU4jaIoQZMTEd3TYp9FQfOyuaWf9rJ9OPAGjMbnrCQCwXWBHwE_xkYPpPz2oLIA4wuads5Z64JZodvRAE141HDNi50vvEwhmOt48SI-krmte-VKTWXxf5BWD_xfWLuNR6jwWoF1f4aevOPN3TDxYQ0SX4NlQ0S7UUd5rDPQUnXCBoEbL_XVnDNSWLpBzYaunbA5oVKeLcCdjAUTEt6AtTACQsKjWKMnU3V-_TFIyQcfz59xw9CBzsAFWNLPus5Q";
-//        String url = "https://uiot.ixxc.dev/auth/realms/master/login-actions/registration?client_id=openremote";
+        String url = "https://uiot.ixxc.dev/auth/realms/master/login-actions/registration?client_id=openremote";
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(WebView view,String url){
                 if(url.contains("openid-connect/registrations")){
                     Log.d("A","onPageFinished: Fill form");
-
 
 
                     String usrScript= "document.getElementById('username').value = '"+ usr +"';";

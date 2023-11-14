@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -91,8 +92,20 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             // Gửi yêu cầu đặt lại mật khẩu thành công
                             Toast.makeText(ResetPasswordActivity.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
                             // Chuyển đến màn hình chính hoặc màn hình đăng nhập
-                            Intent intent = new Intent(ResetPasswordActivity.this, MainActivity.class);
-                            startActivity(intent);
+//                            Intent intent = new Intent(ResetPasswordActivity.this, LoginActivity.class);
+//                            startActivity(intent);
+//                            finish();
+                            // Chuyển người dùng đến ứng dụng Gmail
+                            Intent intent = getPackageManager().getLaunchIntentForPackage("com.google.android.gm");
+                            if (intent != null) {
+                                intent.setAction(Intent.ACTION_MAIN);
+                                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                                startActivity(intent);
+                            } else {
+                                // Nếu ứng dụng Gmail không được cài đặt, bạn có thể chuyển đến trang web đặt lại mật khẩu trên trình duyệt mặc định.
+                                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com"));
+                                startActivity(browserIntent);
+                            }
                             finish();
                         } else {
                             // Gửi yêu cầu đặt lại mật khẩu thất bại
