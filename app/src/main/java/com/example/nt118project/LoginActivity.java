@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
@@ -25,40 +23,35 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Locale;
-
-public class Register extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private ImageButton languageButton;
     private ImageView back;
     private TextView backText;
-    private EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
-    private TextView signupBtn;
-    private TextView welcomeText, signupText, usernameText, emailText, passwordText, cfPasswordText, typeHintText, signupUppreText;
+    private EditText editTextEmail, editTextPassword;
+    private TextView signinBtn;
+    private TextView welcomeBackText, signinText, usernameText, emailText, passwordText, typeHintText, signinUppreText, forgotPass;
     private boolean isEnglish = true;
-
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
+        setContentView(R.layout.activity_login);
         languageButton = findViewById(R.id.languageButton);
-        welcomeText = findViewById(R.id.welcome_text);
-        signupText = findViewById(R.id.signup_text);
-        usernameText = findViewById(R.id.textViewUsername);
-        emailText = findViewById(R.id.textViewEmail);
-        passwordText = findViewById(R.id.textViewPassword);
-        cfPasswordText = findViewById(R.id.textViewConfirmPassword);
-        signupUppreText = findViewById(R.id.signup_btn);
+        welcomeBackText=findViewById(R.id.welcome_text);
+        signinText=findViewById(R.id.signin_text);
+        emailText=findViewById(R.id.textViewEmail);
+        passwordText=findViewById(R.id.textViewPassword);
+        forgotPass=findViewById(R.id.forgotpassword);
+//        typeHintText=findViewById(R.id.welcome_text);
+        signinUppreText=findViewById(R.id.signin_btn);
         mAuth = FirebaseAuth.getInstance();
-
         back = findViewById(R.id.back_arrow);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent backIntent = new Intent(Register.this, Welcome.class);
+                Intent backIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
                 startActivity(backIntent);
             }
         });
@@ -68,7 +61,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent backIntent = new Intent(Register.this, Welcome.class);
+                Intent backIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
                 startActivity(backIntent);
             }
         });
@@ -82,71 +75,70 @@ public class Register extends AppCompatActivity {
 
                 // Thay đổi ngôn ngữ toàn cục
                 String languageCode = isEnglish ? "en" : "vi";
-                setLocale(languageCode);
+                LanguageManager.getInstance().changeLanguage(getResources(), languageCode);
 
+                // Khởi tạo lại Activity để áp dụng ngôn ngữ mới
                 updateUI();
             }
         });
 
-        editTextUsername = findViewById(R.id.editTextUsername);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
 
-        signupBtn = findViewById(R.id.signup_btn);
-        signupBtn.setOnClickListener(new View.OnClickListener() {
+        signinBtn = findViewById(R.id.signin_btn);
+        signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username, email, password, confirmPassword;
-                username = String.valueOf(editTextUsername.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
-                confirmPassword = String.valueOf(editTextConfirmPassword.getText());
 
-                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
-                    Toast.makeText(Register.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(LoginActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (!password.equals(confirmPassword)) {
-                    Toast.makeText(Register.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                mAuth.createUserWithEmailAndPassword(email, password)
+                mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Đăng ký thành công
+                                    // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(Register.this, "Account created.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Login sucessfully.", Toast.LENGTH_SHORT).show();
                                     // Chuyển sang màn hình chính hoặc màn hình đăng nhập
-                                    Intent intent = new Intent(Register.this, MainActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    // Đăng ký thất bại
-                                    Toast.makeText(Register.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(LoginActivity.this, "Login failed.",
+                                            Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
+            }
+        });
+
+        TextView resetPassword = findViewById(R.id.forgotpassword);
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                startActivity(intent);
             }
         });
         // Gọi hàm để đặt ngôn ngữ mặc định
         updateUI();
     }
 
-    private void setLocale(String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-        configuration.setLocale(locale);
-        Resources resources = getResources();
-        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-    }
-
     private void updateUI() {
+//        if (isEnglish) {
+//            setLocale("en");
+//        } else {
+//            setLocale("vi");
+//        }
+
         // Hình ảnh của cờ mới
         Drawable[] layers = new Drawable[2];
         layers[0] = languageButton.getDrawable();
@@ -161,22 +153,20 @@ public class Register extends AppCompatActivity {
         // Ẩn và hiển thị các TextView với animation crossfade
         if (isEnglish) {
             fadeView(backText, R.anim.fade_out, R.string.back_en);
-            fadeView(welcomeText, R.anim.fade_out, R.string.welcome_text_en);
-            fadeView(signupText, R.anim.fade_out, R.string.signup_text_en);
-            fadeView(usernameText, R.anim.fade_out, R.string.username_text_en);
+            fadeView(welcomeBackText, R.anim.fade_out, R.string.welcome_back_text_en);
+            fadeView(signinText, R.anim.fade_out, R.string.signin1_text_en);
             fadeView(emailText, R.anim.fade_out, R.string.email_text);
             fadeView(passwordText, R.anim.fade_out, R.string.password_text_en);
-            fadeView(cfPasswordText, R.anim.fade_out, R.string.confirm_password_text_en);
-            fadeView(signupUppreText, R.anim.fade_out, R.string.signup_upper_en);
+            fadeView(forgotPass, R.anim.fade_out, R.string.ForgotPassword_en);
+            fadeView(signinUppreText, R.anim.fade_out, R.string.signin_upper_en);
         } else {
             fadeView(backText, R.anim.fade_out, R.string.back_vn);
-            fadeView(welcomeText, R.anim.fade_out, R.string.welcome_text_vn);
-            fadeView(signupText, R.anim.fade_out, R.string.signup_text_vn);
-            fadeView(usernameText, R.anim.fade_out, R.string.username_text_vn);
+            fadeView(welcomeBackText, R.anim.fade_out, R.string.welcome_back_text_vn);
+            fadeView(signinText, R.anim.fade_out, R.string.signin1_text_vn);
             fadeView(emailText, R.anim.fade_out, R.string.email_text);
             fadeView(passwordText, R.anim.fade_out, R.string.password_text_vn);
-            fadeView(cfPasswordText, R.anim.fade_out, R.string.confirm_password_text_vn);
-            fadeView(signupUppreText, R.anim.fade_out, R.string.signup_upper_vn);
+            fadeView(forgotPass, R.anim.fade_out, R.string.ForgotPassword_vn);
+            fadeView(signinUppreText, R.anim.fade_out, R.string.signin_upper_vn);
         }
     }
 
@@ -190,7 +180,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 textView.setText(textResource);
-                textView.startAnimation(AnimationUtils.loadAnimation(Register.this, R.anim.fade_in));
+                textView.startAnimation(AnimationUtils.loadAnimation(LoginActivity.this, R.anim.fade_in));
             }
 
             @Override
@@ -199,4 +189,13 @@ public class Register extends AppCompatActivity {
         });
         textView.startAnimation(animation);
     }
+
+//    private void setLocale(String languageCode) {
+//        Locale locale = new Locale(languageCode);
+//        Locale.setDefault(locale);
+//        Configuration configuration = new Configuration();
+//        configuration.setLocale(locale);
+//        Resources resources = getResources();
+//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+//    }
 }

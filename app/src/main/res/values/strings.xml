@@ -55,5 +55,15 @@
     </string>
     <string name="signin_upper_en">SIGN IN</string>
     <string name="signin_upper_vn">ĐĂNG NHẬP</string>
+    <string name="reset_text_en">Reset</string>
+    <string name="old_password_text_en">Old password</string>
+    <string name="new_password_text_en">New password</string>
+    <string name="reset_upper_en">RESET</string>
+    <string name="send_email_text_en">SEND EMAIL</string>
+    <string name="reset_text_vn">Đặt lại</string>
+    <string name="old_password_text_vn">Mật khẩu cũ</string>
+    <string name="new_password_text_vn">Mật khẩu mới</string>
+    <string name="reset_upper_vn">ĐẶT LẠI</string>
+    <string name="send_email_text_vn">GỬI EMAIL</string>
     <string name="default_web_client_id">393644215199-ndocj7fn069cg9ql2ns5q0kip99n2fh8.apps.googleusercontent.com</string>
 </resources>

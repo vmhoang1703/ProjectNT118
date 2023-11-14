@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -36,7 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class Welcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
     private ImageButton languageButton;
     private TextView googleSignin;
     private TextView emailSignin;
@@ -107,7 +106,7 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent loginIntent = new Intent(Welcome.this, Login.class);
+                Intent loginIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
                 startActivity(loginIntent);
             }
         });
@@ -116,7 +115,7 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent signupIntent = new Intent(Welcome.this, Register.class);
+                Intent signupIntent = new Intent(WelcomeActivity.this, RegisterActivity.class);
                 startActivity(signupIntent);
             }
         });
@@ -167,10 +166,10 @@ public class Welcome extends AppCompatActivity {
                             map.put("name", user.getDisplayName());
                             map.put("profile", user.getPhotoUrl().toString());
                             database.getReference().child("users").child(user.getUid()).setValue(map);
-                            Intent intent = new Intent(Welcome.this, MainActivity.class);
+                            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(Welcome.this, "something went wrong", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WelcomeActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -218,7 +217,7 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 textView.setText(textResource);
-                textView.startAnimation(AnimationUtils.loadAnimation(Welcome.this, R.anim.fade_in));
+                textView.startAnimation(AnimationUtils.loadAnimation(WelcomeActivity.this, R.anim.fade_in));
             }
 
             @Override
@@ -238,7 +237,7 @@ public class Welcome extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 textView.setImageResource(imgtResource);
-                textView.startAnimation(AnimationUtils.loadAnimation(Welcome.this, R.anim.fade_in));
+                textView.startAnimation(AnimationUtils.loadAnimation(WelcomeActivity.this, R.anim.fade_in));
             }
 
             @Override

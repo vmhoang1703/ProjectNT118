@@ -27,35 +27,38 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
-public class Login extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private ImageButton languageButton;
     private ImageView back;
     private TextView backText;
-    private EditText editTextEmail, editTextPassword;
-    private TextView signinBtn;
-    private TextView welcomeBackText, signinText, usernameText, emailText, passwordText, typeHintText, signinUppreText, forgotPass;
+    private EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
+    private TextView signupBtn;
+    private TextView welcomeText, signupText, usernameText, emailText, passwordText, cfPasswordText, typeHintText, signupUppreText;
     private boolean isEnglish = true;
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
+
         languageButton = findViewById(R.id.languageButton);
-        welcomeBackText=findViewById(R.id.welcome_text);
-        signinText=findViewById(R.id.signin_text);
-        emailText=findViewById(R.id.textViewEmail);
-        passwordText=findViewById(R.id.textViewPassword);
-        forgotPass=findViewById(R.id.forgotpassword);
-//        typeHintText=findViewById(R.id.welcome_text);
-        signinUppreText=findViewById(R.id.signin_btn);
+        welcomeText = findViewById(R.id.welcome_text);
+        signupText = findViewById(R.id.signup_text);
+        usernameText = findViewById(R.id.textViewUsername);
+        emailText = findViewById(R.id.textViewEmail);
+        passwordText = findViewById(R.id.textViewPassword);
+        cfPasswordText = findViewById(R.id.textViewConfirmPassword);
+        signupUppreText = findViewById(R.id.signup_btn);
         mAuth = FirebaseAuth.getInstance();
+
         back = findViewById(R.id.back_arrow);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent backIntent = new Intent(Login.this, Welcome.class);
+                Intent backIntent = new Intent(RegisterActivity.this, WelcomeActivity.class);
                 startActivity(backIntent);
             }
         });
@@ -65,7 +68,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent backIntent = new Intent(Login.this, Welcome.class);
+                Intent backIntent = new Intent(RegisterActivity.this, WelcomeActivity.class);
                 startActivity(backIntent);
             }
         });
@@ -79,45 +82,53 @@ public class Login extends AppCompatActivity {
 
                 // Thay đổi ngôn ngữ toàn cục
                 String languageCode = isEnglish ? "en" : "vi";
-                LanguageManager.getInstance().changeLanguage(getResources(), languageCode);
+                setLocale(languageCode);
 
-                // Khởi tạo lại Activity để áp dụng ngôn ngữ mới
                 updateUI();
             }
         });
 
+        editTextUsername = findViewById(R.id.editTextUsername);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
+        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
 
-        signinBtn = findViewById(R.id.signin_btn);
-        signinBtn.setOnClickListener(new View.OnClickListener() {
+        signupBtn = findViewById(R.id.signup_btn);
+        signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username, email, password, confirmPassword;
+                username = String.valueOf(editTextUsername.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
+                confirmPassword = String.valueOf(editTextConfirmPassword.getText());
 
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+                    Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
+                if (!password.equals(confirmPassword)) {
+                    Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
+                                    // Đăng ký thành công
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(Login.this, "Login sucessfully.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
                                     // Chuyển sang màn hình chính hoặc màn hình đăng nhập
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Login.this, "Login failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    // Đăng ký thất bại
+                                    Exception e = task.getException();
+                                    Toast.makeText(RegisterActivity.this, "Authentication failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -127,13 +138,16 @@ public class Login extends AppCompatActivity {
         updateUI();
     }
 
-    private void updateUI() {
-//        if (isEnglish) {
-//            setLocale("en");
-//        } else {
-//            setLocale("vi");
-//        }
+    private void setLocale(String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.setLocale(locale);
+        Resources resources = getResources();
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+    }
 
+    private void updateUI() {
         // Hình ảnh của cờ mới
         Drawable[] layers = new Drawable[2];
         layers[0] = languageButton.getDrawable();
@@ -148,20 +162,22 @@ public class Login extends AppCompatActivity {
         // Ẩn và hiển thị các TextView với animation crossfade
         if (isEnglish) {
             fadeView(backText, R.anim.fade_out, R.string.back_en);
-            fadeView(welcomeBackText, R.anim.fade_out, R.string.welcome_back_text_en);
-            fadeView(signinText, R.anim.fade_out, R.string.signin1_text_en);
+            fadeView(welcomeText, R.anim.fade_out, R.string.welcome_text_en);
+            fadeView(signupText, R.anim.fade_out, R.string.signup_text_en);
+            fadeView(usernameText, R.anim.fade_out, R.string.username_text_en);
             fadeView(emailText, R.anim.fade_out, R.string.email_text);
             fadeView(passwordText, R.anim.fade_out, R.string.password_text_en);
-            fadeView(forgotPass, R.anim.fade_out, R.string.ForgotPassword_en);
-            fadeView(signinUppreText, R.anim.fade_out, R.string.signin_upper_en);
+            fadeView(cfPasswordText, R.anim.fade_out, R.string.confirm_password_text_en);
+            fadeView(signupUppreText, R.anim.fade_out, R.string.signup_upper_en);
         } else {
             fadeView(backText, R.anim.fade_out, R.string.back_vn);
-            fadeView(welcomeBackText, R.anim.fade_out, R.string.welcome_back_text_vn);
-            fadeView(signinText, R.anim.fade_out, R.string.signin1_text_vn);
+            fadeView(welcomeText, R.anim.fade_out, R.string.welcome_text_vn);
+            fadeView(signupText, R.anim.fade_out, R.string.signup_text_vn);
+            fadeView(usernameText, R.anim.fade_out, R.string.username_text_vn);
             fadeView(emailText, R.anim.fade_out, R.string.email_text);
             fadeView(passwordText, R.anim.fade_out, R.string.password_text_vn);
-            fadeView(forgotPass, R.anim.fade_out, R.string.ForgotPassword_vn);
-            fadeView(signinUppreText, R.anim.fade_out, R.string.signin_upper_vn);
+            fadeView(cfPasswordText, R.anim.fade_out, R.string.confirm_password_text_vn);
+            fadeView(signupUppreText, R.anim.fade_out, R.string.signup_upper_vn);
         }
     }
 
@@ -175,7 +191,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 textView.setText(textResource);
-                textView.startAnimation(AnimationUtils.loadAnimation(Login.this, R.anim.fade_in));
+                textView.startAnimation(AnimationUtils.loadAnimation(RegisterActivity.this, R.anim.fade_in));
             }
 
             @Override
@@ -184,13 +200,4 @@ public class Login extends AppCompatActivity {
         });
         textView.startAnimation(animation);
     }
-
-//    private void setLocale(String languageCode) {
-//        Locale locale = new Locale(languageCode);
-//        Locale.setDefault(locale);
-//        Configuration configuration = new Configuration();
-//        configuration.setLocale(locale);
-//        Resources resources = getResources();
-//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-//    }
 }

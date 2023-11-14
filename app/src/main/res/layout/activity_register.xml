@@ -100,7 +100,7 @@
         android:hint="@string/type_hint_en"
         android:paddingLeft="50px"
         android:textSize="15dp"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:background="@drawable/borderbtn"
         android:layout_above="@+id/textViewEmail"/>
 
@@ -136,7 +136,7 @@
         android:hint="@string/type_hint_en"
         android:paddingLeft="50px"
         android:textSize="15dp"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:background="@drawable/borderbtn"
         android:layout_above="@+id/textViewPassword"/>
 
