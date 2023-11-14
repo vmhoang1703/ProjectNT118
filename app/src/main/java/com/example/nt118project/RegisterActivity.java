@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageButton languageButton;
     private ImageView back;
     private TextView backText;
-    private EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
+    public EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
     private TextView signupBtn;
     private TextView welcomeText, signupText, usernameText, emailText, passwordText, cfPasswordText, typeHintText, signupUppreText;
     private boolean isEnglish = true;
@@ -102,6 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 confirmPassword = String.valueOf(editTextConfirmPassword.getText());
+                MainActivity.setValueFromCurrentClass(username, email, password, confirmPassword);
 
                 if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
                     Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
