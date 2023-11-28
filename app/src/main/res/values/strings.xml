@@ -65,5 +65,17 @@
     <string name="new_password_text_vn">Mật khẩu mới</string>
     <string name="reset_upper_vn">ĐẶT LẠI</string>
     <string name="send_email_text_vn">GỬI EMAIL</string>
+    <string name="errInput">Wrong username or password!</string>
+    <string name="connErr">Connect failed!</string>
+    <string name="networkErr">Network error!</string>
+    <string name="resetSucc">Password changed</string>
+    <string name="confirmErr">Confirm password not match!</string>
+    <string name="loginSucc">Login successful</string>
+    <string name="loginFailed">Login failed!</string>
+    <string name="emailErr">Email already exists!</string>
+    <string name="invalidEmail">Invalid email address!</string>
+    <string name="userErr">Username already exists!</string>
+    <string name="signupSucc">Signup successfully</string>
+    <string name="welcome">"Welcome, "</string>
     <string name="default_web_client_id">393644215199-ndocj7fn069cg9ql2ns5q0kip99n2fh8.apps.googleusercontent.com</string>
 </resources>
