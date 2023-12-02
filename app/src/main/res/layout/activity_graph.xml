@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:background="@drawable/background1">
+
+
+    <TextView
+        android:id="@+id/graph_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/graph_en"
+        android:textColor="@color/black"
+        android:layout_marginTop="12dp"
+        android:textSize="30dp" />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/user"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="10dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/info_bg"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:id="@+id/graphImg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="172dp"
+            android:layout_marginTop="55dp"
+            android:src="@mipmap/graph1"
+            android:layout_centerHorizontal="true"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/graphImg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/attr_time_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp">
+
+                    <!-- Attributes Spinner -->
+                    <Spinner
+                        android:id="@+id/attributesSpinner"
+                        android:layout_width="160dp"
+                        android:layout_height="60dp"
+                        android:paddingLeft="5dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@drawable/spinner_bg"/>
+
+                    <!-- Timeframe Spinner -->
+                    <Spinner
+                        android:id="@+id/timeframeSpinner"
+                        android:layout_width="160dp"
+                        android:layout_height="60dp"
+                        android:paddingLeft="5dp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/spinner_bg"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/startingDate"
+                    android:layout_width="360dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/attr_time_spinner"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_centerHorizontal="true">
+                    <TextView
+                        android:id="@+id/startingDateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Starting date"
+                        android:textSize="18dp"
+                        android:paddingLeft="18.82dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="#ACABAB"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@mipmap/calendar"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="18.82dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/endingDate"
+                    android:layout_width="360dp"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/startingDate"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_centerHorizontal="true">
+                    <TextView
+                        android:id="@+id/endingDateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ending date"
+                        android:textSize="18dp"
+                        android:paddingLeft="18.82dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="#ACABAB"/>
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@mipmap/calendar"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="18.82dp"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/show_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/shadowbtn"
+                    android:layout_below="@+id/endingDate"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/show_en"
+                    android:textColor="#9cb6c4"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:elevation="7dp"
+                    android:layout_marginTop="30dp"/>
+
+
+                <TextView
+                    android:id="@+id/graph"
+                    android:layout_width="360dp"
+                    android:layout_height="360dp"
+                    android:layout_below="@+id/show_btn"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="100dp"/>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/menu_bg">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+                <RelativeLayout
+                    android:id="@+id/homeNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true">
+                    <ImageView
+                        android:id="@+id/homeIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/home"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Home"
+                        android:textSize="10dp"
+                        android:layout_below="@+id/homeIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/graphNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/homeNavi"
+                    android:layout_marginLeft="30dp">
+                    <ImageView
+                        android:id="@+id/graphIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/graph"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Graph"
+                        android:textSize="10dp"
+                        android:layout_below="@+id/graphIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mapNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/graphNavi"
+                    android:layout_marginLeft="30dp">
+                    <ImageView
+                        android:id="@+id/mapIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/location_img"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Map"
+                        android:textSize="10dp"
+                        android:layout_below="@+id/mapIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/personalNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/mapNavi"
+                    android:layout_marginLeft="30dp">
+                    <ImageView
+                        android:id="@+id/personalIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/personal"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile"
+                        android:textSize="10dp"
+                        android:layout_below="@+id/personalIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
