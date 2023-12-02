@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    android:background="@drawable/background2">
+
+    <RelativeLayout
+        android:id="@+id/summaryInfo"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp">
+
+        <RelativeLayout
+            android:id="@+id/welcome_user"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp">
+
+            <ImageView
+                android:id="@+id/user_img"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@mipmap/user"/>
+
+            <TextView
+                android:id="@+id/hiText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hi_en"
+                android:layout_toRightOf="@+id/user_img"
+                android:layout_centerVertical="true"
+                android:textSize="24dp"
+                android:layout_marginLeft="14dp"/>
+
+            <TextView
+                android:id="@+id/usernameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/hiText"
+                android:layout_centerVertical="true"
+                android:text="admin"
+                android:textSize="24dp"
+                android:layout_marginLeft="7dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/weatherInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_user"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:id="@+id/summaryInfo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/weatherImg"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/mostly_sunny"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mostly sunny"
+                    android:textSize="24dp"
+                    android:layout_below="@+id/weatherImg"
+                    android:layout_marginTop="10dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/summaryInfo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/summaryInfo1"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Wednesday"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/temperatureUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/day"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="°C"
+                    android:textSize="60dp" />
+
+                <TextView
+                    android:id="@+id/temperatureNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/day"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toLeftOf="@+id/temperatureUnit"
+                    android:text="27"
+                    android:textSize="60dp" />
+
+                <TextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/temperatureNumber"
+                    android:text="Bien Hoa"
+                    android:textSize="24dp"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/location_img"
+                    android:layout_toLeftOf="@+id/locationText"
+                    android:layout_below="@+id/temperatureNumber"
+                    android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/summaryInfo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bg">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/itemsInfoRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="54dp">
+
+                    <RelativeLayout
+                        android:id="@+id/rainfallInfo"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/items_bg"
+                        android:elevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/rainfallIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@mipmap/rainfall" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_toRightOf="@+id/rainfallIcon"
+                            android:text="RAINFALL"
+                            android:textSize="13dp"/>
+
+                        <TextView
+                            android:id="@+id/rainfallFigure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="7"
+                            android:textSize="40dp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="mm"
+                            android:textStyle="bold"
+                            android:textSize="24dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="7dp"
+                            android:layout_centerHorizontal="true"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/temperatureInfo"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_toRightOf="@+id/rainfallInfo"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@drawable/items_bg"
+                        android:elevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/temperatureIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@mipmap/temperature" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_toRightOf="@+id/temperatureIcon"
+                            android:text="TEMPERATURE"
+                            android:textSize="13dp"/>
+
+                        <TextView
+                            android:id="@+id/temperatureFigure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="27"
+                            android:textSize="40dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="°C"
+                            android:textStyle="bold"
+                            android:textSize="24dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="7dp"
+                            android:layout_centerHorizontal="true"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/itemsInfoRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/itemsInfoRow1"
+                    android:layout_marginTop="54dp">
+
+                    <RelativeLayout
+                        android:id="@+id/humidityInfo"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/items_bg"
+                        android:elevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/humidityIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@mipmap/humidity" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_toRightOf="@+id/humidityIcon"
+                            android:text="HUMIDITY"
+                            android:textSize="13dp"/>
+
+                        <TextView
+                            android:id="@+id/humidityFigure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="79"
+                            android:textSize="40dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="%"
+                            android:textStyle="bold"
+                            android:textSize="24dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="7dp"
+                            android:layout_centerHorizontal="true"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/windDirectionInfo"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_toRightOf="@+id/humidityInfo"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@drawable/items_bg"
+                        android:elevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/windDirectionIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@mipmap/wind_direction" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_toRightOf="@+id/windDirectionIcon"
+                            android:text="WIND DIRECTION"
+                            android:textSize="13dp" />
+
+                        <TextView
+                            android:id="@+id/windDirectionFigure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="120"
+                            android:textSize="40dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="degrees"
+                            android:textStyle="bold"
+                            android:textSize="24dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="7dp"
+                            android:layout_centerHorizontal="true"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/itemsInfoRow3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/itemsInfoRow2"
+                    android:layout_marginTop="54dp"
+                    android:layout_marginBottom="100dp">
+
+                    <RelativeLayout
+                        android:id="@+id/windSpeedInfo"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginRight="7dp"
+                        android:background="@drawable/items_bg"
+                        android:elevation="5dp">
+
+                        <ImageView
+                            android:id="@+id/windSpeedIcon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@mipmap/wind_speed" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_toRightOf="@+id/windSpeedIcon"
+                            android:text="WIND SPEED"
+                            android:textSize="13dp"/>
+
+                        <TextView
+                            android:id="@+id/windSpeedFigure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="3.09"
+                            android:textSize="40dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="m/s"
+                            android:textStyle="bold"
+                            android:textSize="24dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="7dp"
+                            android:layout_centerHorizontal="true"/>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_bg">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+            <RelativeLayout
+                android:id="@+id/homeNavi"
+                android:layout_width="53.43dp"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true">
+                <ImageView
+                    android:id="@+id/homeIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@mipmap/home"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:textSize="10dp"
+                    android:layout_below="@+id/homeIcon"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/graphNavi"
+                android:layout_width="53.43dp"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/homeNavi"
+                android:layout_marginLeft="30dp">
+                <ImageView
+                    android:id="@+id/graphIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@mipmap/graph"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Graph"
+                    android:textSize="10dp"
+                    android:layout_below="@+id/graphIcon"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mapNavi"
+                android:layout_width="53.43dp"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/graphNavi"
+                android:layout_marginLeft="30dp">
+                <ImageView
+                    android:id="@+id/mapIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@mipmap/location_img"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Map"
+                    android:textSize="10dp"
+                    android:layout_below="@+id/mapIcon"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/personalNavi"
+                android:layout_width="53.43dp"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/mapNavi"
+                android:layout_marginLeft="30dp">
+                <ImageView
+                    android:id="@+id/personalIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@mipmap/personal"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textSize="10dp"
+                    android:layout_below="@+id/personalIcon"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

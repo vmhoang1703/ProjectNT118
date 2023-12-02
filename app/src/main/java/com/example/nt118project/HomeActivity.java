@@ -15,9 +15,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.screen4);
+        setContentView(R.layout.activity_home);
 
-        home_username = findViewById(R.id.home_username);
+        home_username = findViewById(R.id.usernameText);
         SharedPreferences sharedPreferences = getSharedPreferences("PREF", MODE_PRIVATE);
         ;
         home_username.setText(getString(R.string.welcome) + sharedPreferences.getString("username", ""));

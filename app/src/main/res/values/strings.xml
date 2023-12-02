@@ -80,13 +80,32 @@
     <string name="default_web_client_id">393644215199-ndocj7fn069cg9ql2ns5q0kip99n2fh8.apps.googleusercontent.com</string>
 
 
-
     <string name="user_info_text_en">Your information</string>
+    <string name="profile_en">Profile</string>
     <string name="user_info_text_vn">Đăng ký!</string>
     <string name="edit_en">Edit</string>
     <string name="edit_vn">Chỉnh sửa</string>
     <string name="firstname_en">Firstname</string>
-<!--    <string name="edit_vn">Chỉnh sửa</string>-->
+    <!--    <string name="edit_vn">Chỉnh sửa</string>-->
     <string name="lastname_en">Lastname</string>
-<!--    <string name="edit_vn">Chỉnh sửa</string>-->
+    <!--    <string name="edit_vn">Chỉnh sửa</string>-->
+
+
+    <!--    Home-->
+    <string name="hi_en">Hi,</string>
+
+<!--    Graph-->
+    <string name="graph_en">Graph</string>
+    <string name="show_en">Show</string>
+    <string-array name="attributes_array">
+        <item>Select Attribute</item>
+        <item>Temperature</item>
+        <item>Humidity</item>
+    </string-array>
+
+    <string-array name="timeframe_array">
+        <item>Select Timeframe</item>
+        <item>Day</item>
+        <item>Hour</item>
+    </string-array>
 </resources>
