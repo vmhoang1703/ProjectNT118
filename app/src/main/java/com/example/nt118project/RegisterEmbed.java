@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUpEmbed extends AppCompatActivity {
+public class RegisterEmbed extends AppCompatActivity {
     private static final int CHECK_INTERVAL_MS = 500; // Every half a second
     private static final int TIMEOUT_MS = 10000; // 10 seconds
     private WebView webview;
@@ -77,21 +77,21 @@ public class SignUpEmbed extends AppCompatActivity {
                                 if (value != null && !value.equals("null")){
                                     switch (value){
                                         case "\"emailError\"":
-                                            Toast.makeText(SignUpEmbed.this, R.string.emailErr, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterEmbed.this, R.string.emailErr, Toast.LENGTH_SHORT).show();
                                             break;
                                         case "\"invalidEmail\"":
-                                            Toast.makeText(SignUpEmbed.this, R.string.invalidEmail, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterEmbed.this, R.string.invalidEmail, Toast.LENGTH_SHORT).show();
                                             break;
                                         case "\"usernameError\"":
-                                            Toast.makeText(SignUpEmbed.this, R.string.userErr, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterEmbed.this, R.string.userErr, Toast.LENGTH_SHORT).show();
                                             break;
                                         case "\"passwordError\"":
-                                            Toast.makeText(SignUpEmbed.this, R.string.confirmErr, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(RegisterEmbed.this, R.string.confirmErr, Toast.LENGTH_SHORT).show();
                                             break;
                                     }
                                 } else {
-                                    Toast.makeText(SignUpEmbed.this, R.string.signupSucc, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(SignUpEmbed.this, MainActivity.class);
+                                    Toast.makeText(RegisterEmbed.this, R.string.signupSucc, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterEmbed.this, MainActivity.class);
                                     startActivity(intent);
                                 }
                                 finish();

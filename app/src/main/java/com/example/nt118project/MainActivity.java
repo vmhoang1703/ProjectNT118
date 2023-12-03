@@ -3,13 +3,24 @@ package com.example.nt118project;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,6 +28,22 @@ import retrofit2.Response;
 import com.example.nt118project.response.LoginResponse;
 import com.example.nt118project.util.APIClient;
 import com.example.nt118project.util.APIInterface;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 public class MainActivity extends BaseActivity {
     @Override
@@ -69,113 +96,215 @@ public class MainActivity extends BaseActivity {
         });
     }
 }
-
-//import androidx.appcompat.app.AppCompatActivity;
+//public class WelcomeActivity extends AppCompatActivity {
+//    private ImageButton languageButton;
+//    private TextView googleSignin;
+//    private TextView emailSignin;
+//    private TextView signup;
+//    private TextView signinText;
+//    private TextView welcomeText;
+//    private TextView googleSignInText;
+//    private TextView accountSignInText;
+//    private TextView orText;
+//    private TextView linkToRegister;
+//    private ImageView logoGG;
+//    private boolean isEnglish = true;
+//    FirebaseAuth auth;
+//    FirebaseDatabase database;
+//    GoogleSignInClient mGoogleSignInClient;
+//    int RC_SIGN_IN = 20;
 //
-//import android.annotation.SuppressLint;
-//import android.os.Bundle;
-//import android.os.Handler;
-//import android.os.Message;
-//import android.util.Log;
-//import android.webkit.WebView;
-//import android.webkit.WebViewClient;
-//
-//import okhttp3.MediaType;
-//import okhttp3.OkHttpClient;
-//import okhttp3.Request;
-//import okhttp3.RequestBody;
-//import okhttp3.Response;
-
-
-
-//public class MainActivity extends AppCompatActivity {
-//
-//
-//    static String usr ;
-//    static String email ;
-//    static String pwd;
-//    static String rePwd;
-//    static String token;
-//
-//    public static void setValueFromCurrentClass(String username, String eml, String password, String confirmPassword) {
-//        usr = username;
-//        email = eml;
-//        pwd= password;
-//        rePwd= confirmPassword;
-//    }
-//    @SuppressLint("HandlerLeak")
-//    private final Handler handler = new Handler() {
-//        @Override
-//        public void handleMessage(Message msg) {
-//            // Xử lý khi đã lấy được token, ví dụ lưu trữ hoặc sử dụng nó cho các yêu cầu khác
-//            Log.d("Token", token);
-//        }
-//    };
-////    https://uiot.ixxc.dev/auth/realms/master/login-actions/authenticate?client_id=openremote
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        setValueFromCurrentClass(usr,email,pwd,rePwd);
-//        WebView webView = (WebView) findViewById(R.id.webView);
-//        webView.getSettings().setJavaScriptEnabled(true);
-//        webView.clearCache(true);
-//        webView.clearHistory();
-//        String token = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoREkwZ2hyVlJvaE5zVy1wSXpZeDBpT2lHMzNlWjJxV21sRk4wWGE1dWkwIn0.eyJleHAiOjE2OTk5MjMxNDIsImlhdCI6MTY5OTkyMzA4MiwianRpIjoiMGM0ZDEyNWMtNjcxOC00NzU2LWJmODItZGU0YjY4YTdlN2JkIiwiaXNzIjoiaHR0cHM6Ly91aW90Lml4eGMuZGV2L2F1dGgvcmVhbG1zL21hc3RlciIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1Yzg3ZWU2ZS0xOGYwLTQzMTgtYjYyZS1mMzI4OGU4MzliMmIiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJvcGVucmVtb3RlIiwic2Vzc2lvbl9zdGF0ZSI6IjZhY2RmMGZmLTZhMzctNDQyNy04YTM4LTMxZDQzNWQzMWRjMyIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly91aW90Lml4eGMuZGV2Il0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLW1hc3RlciIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI2YWNkZjBmZi02YTM3LTQ0MjctOGEzOC0zMWQ0MzVkMzFkYzMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJUcmlldSBEaW5oIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiMjE1MjE1NzYiLCJnaXZlbl9uYW1lIjoiVHJpZXUiLCJmYW1pbHlfbmFtZSI6IkRpbmgiLCJlbWFpbCI6InRyaWV1YnVpMDAzQGdtYWlsLmNvbSJ9.UmnH_WE4HYu3Si_8v0SfIeeBt3EsXAJxIWzMeBafRWaYJZvxGutjdLB2mdOpnaOaKWhH0ioXKOvKnBisfRXG47-PU4jaIoQZMTEd3TYp9FQfOyuaWf9rJ9OPAGjMbnrCQCwXWBHwE_xkYPpPz2oLIA4wuads5Z64JZodvRAE141HDNi50vvEwhmOt48SI-krmte-VKTWXxf5BWD_xfWLuNR6jwWoF1f4aevOPN3TDxYQ0SX4NlQ0S7UUd5rDPQUnXCBoEbL_XVnDNSWLpBzYaunbA5oVKeLcCdjAUTEt6AtTACQsKjWKMnU3V-_TFIyQcfz59xw9CBzsAFWNLPus5Q";
-//        String url = "https://uiot.ixxc.dev/auth/realms/master/login-actions/registration?client_id=openremote";
-//        webView.setWebViewClient(new WebViewClient(){
+//        setContentView(R.layout.activity_welcome);
+//
+//        languageButton = findViewById(R.id.languageButton);
+//        googleSignin = findViewById(R.id.googleSignIn);
+//        auth = FirebaseAuth.getInstance();
+//        database = FirebaseDatabase.getInstance();
+//
+//        // Khởi tạo các TextView còn thiếu
+//        emailSignin = findViewById(R.id.email_signin);
+//        signup = findViewById(R.id.linktoregister);
+//        signinText = findViewById(R.id.sigin_text);
+//        welcomeText = findViewById(R.id.welcome_text);
+//        googleSignInText = findViewById(R.id.googleSignIn);
+//        accountSignInText = findViewById(R.id.email_signin);
+//        orText = findViewById(R.id.or_text);
+//        linkToRegister = findViewById(R.id.linktoregister);
+//        logoGG = findViewById(R.id.logogoogle);
+//
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail().build();
+//
+//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+//
+//        // Đặt sự kiện khi nhấn vào nút ngôn ngữ
+//        languageButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onPageFinished(WebView view,String url){
-//                if(url.contains("openid-connect/registrations")){
-//                    Log.d("A","onPageFinished: Fill form");
+//            public void onClick(View v) {
+//                // Đảm bảo rằng ngôn ngữ được chuyển đổi
+//                isEnglish = !isEnglish;
 //
+//                // Thay đổi ngôn ngữ toàn cục
+//                String languageCode = isEnglish ? "en" : "vi";
+//                setLocale(languageCode);
 //
-//                    String usrScript= "document.getElementById('username').value = '"+ usr +"';";
-//                    String emailScript= "document.getElementById('email').value = '"+ email +"';";
-//                    String pwdScript= "document.getElementById('password').value = '"+ pwd +"';";
-//                    String rePwdScript= "document.getElementById('rePassword').value = '"+ rePwd +"';";
-//
-//                    view.evaluateJavascript(usrScript,null);
-//                    view.evaluateJavascript(emailScript,null);
-//                    view.evaluateJavascript(pwdScript,null);
-//                    view.evaluateJavascript(rePwdScript,null);
-//                    view.evaluateJavascript("document.getElementById('submit_button').submit();",null);
-//            }}
+//                updateUI();
+//            }
 //        });
 //
-//        webView.stopLoading();
-//        getToken();
-////        webView.loadUrl("https://uiot.ixxc.dev/manager/");
-//
-//    }
-//    private void getToken() {
-//        // Thực hiện yêu cầu POST để lấy token
-//        new Thread(new Runnable() {
+//        googleSignin.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void run() {
-//                try {
-//                    OkHttpClient client = new OkHttpClient();
-//                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                    String json = "{\"username\":\"your_username\",\"password\":\"your_password\"}";
-//                    RequestBody body = RequestBody.create(JSON, json);
-//                    Request request = new Request.Builder()
-//                            .url("https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/token")
-//                            .post(body)
-//                            .build();
-//
-//                    Response response = client.newCall(request).execute();
-//                    if (response.isSuccessful()) {
-//                        String responseString = response.body().string();
-//
-//                        token = ""; // Thay bằng cách parse token từ responseString
-//
-//                        // Gửi thông báo đến Handler để xử lý token
-//                        handler.sendEmptyMessage(0);
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
+//            public void onClick(View v) {
+//                googleSignin1();
 //            }
-//        }).start();
+//        });
+//
+//        emailSignin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Tạo Intent để mở màn hình đăng nhập
+//                Intent loginIntent = new Intent(WelcomeActivity.this, LoginActivity.class);
+//                startActivity(loginIntent);
+//            }
+//        });
+//
+//        signup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Tạo Intent để mở màn hình đăng nhập
+//                Intent signupIntent = new Intent(WelcomeActivity.this, RegisterActivity.class);
+//                startActivity(signupIntent);
+//            }
+//        });
+//
+//        // Gọi hàm để đặt ngôn ngữ mặc định
+//        updateUI();
+//    }
+//
+//    private void setLocale(String languageCode) {
+//        Locale locale = new Locale(languageCode);
+//        Locale.setDefault(locale);
+//        Configuration configuration = new Configuration();
+//        configuration.setLocale(locale);
+//        Resources resources = getResources();
+//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+//    }
+//
+//    private void googleSignin1() {
+//        Intent intent = mGoogleSignInClient.getSignInIntent();
+//        startActivityForResult(intent, RC_SIGN_IN);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == RC_SIGN_IN) {
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                GoogleSignInAccount account = task.getResult(ApiException.class);
+//                firebaseAuth(account.getIdToken());
+//            } catch (Exception e) {
+//                Toast.makeText(this, "SAI", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
+//
+//    private void firebaseAuth(String idToken) {
+//        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+//        auth.signInWithCredential(credential)
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            FirebaseUser user = auth.getCurrentUser();
+//                            HashMap<String, Object> map = new HashMap<>();
+//                            map.put("id", user.getUid());
+//                            map.put("name", user.getDisplayName());
+//                            map.put("profile", user.getPhotoUrl().toString());
+//                            database.getReference().child("users").child(user.getUid()).setValue(map);
+//                            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+//                            startActivity(intent);
+//                        } else {
+//                            Toast.makeText(WelcomeActivity.this, "something went wrong", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
+//
+//    private void updateUI() {
+//        // Hình ảnh của cờ mới
+//        Drawable[] layers = new Drawable[2];
+//        layers[0] = languageButton.getDrawable();
+//        layers[1] = getResources().getDrawable(isEnglish ? R.drawable.english : R.drawable.vietnamese);
+//
+//        TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
+//        languageButton.setImageDrawable(transitionDrawable);
+//
+//        // Chạy hiệu ứng crossfade cho ImageButton
+//        transitionDrawable.startTransition(400); // 500 milliseconds (adjust as needed)
+//
+//        // Ẩn và hiển thị các TextView với animation crossfade
+//        if (isEnglish) {
+//            fadeView(signinText, R.anim.fade_out, R.string.signin_text_en);
+//            fadeView(welcomeText, R.anim.fade_out, R.string.wc_text_en);
+//            fadeView(googleSignInText, R.anim.fade_out, R.string.gg_signin_en);
+//            fadeView(accountSignInText, R.anim.fade_out, R.string.ac_signin_en);
+//            fadeView(orText, R.anim.fade_out, R.string.or_text_en);
+//            fadeView(linkToRegister, R.anim.fade_out, R.string.LinkToRegister_en);
+//            fadeImageView(logoGG, R.anim.fade_out, R.drawable.logogoogle);
+//        } else {
+//            fadeView(signinText, R.anim.fade_out, R.string.signin_text_vn);
+//            fadeView(welcomeText, R.anim.fade_out, R.string.wc_text_vn);
+//            fadeView(googleSignInText, R.anim.fade_out, R.string.gg_signin_vn);
+//            fadeView(accountSignInText, R.anim.fade_out, R.string.ac_signin_vn);
+//            fadeView(orText, R.anim.fade_out, R.string.or_text_vn);
+//            fadeView(linkToRegister, R.anim.fade_out, R.string.LinkToRegister_vn);
+//            fadeImageView(logoGG, R.anim.fade_out, R.drawable.logogoogle);
+//        }
+//    }
+//
+//    private void fadeView(final TextView textView, int animResource, final int textResource) {
+//        Animation animation = AnimationUtils.loadAnimation(this, animResource);
+//        animation.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                textView.setText(textResource);
+//                textView.startAnimation(AnimationUtils.loadAnimation(WelcomeActivity.this, R.anim.fade_in));
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//            }
+//        });
+//        textView.startAnimation(animation);
+//    }
+//
+//    private void fadeImageView(final ImageView textView, int animResource, final int imgtResource) {
+//        Animation animation = AnimationUtils.loadAnimation(this, animResource);
+//        animation.setAnimationListener(new Animation.AnimationListener() {
+//            @Override
+//            public void onAnimationStart(Animation animation) {
+//            }
+//
+//            @Override
+//            public void onAnimationEnd(Animation animation) {
+//                textView.setImageResource(imgtResource);
+//                textView.startAnimation(AnimationUtils.loadAnimation(WelcomeActivity.this, R.anim.fade_in));
+//            }
+//
+//            @Override
+//            public void onAnimationRepeat(Animation animation) {
+//            }
+//        });
+//        textView.startAnimation(animation);
 //    }
 //}
