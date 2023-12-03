@@ -122,6 +122,7 @@ public class LoginActivity extends BaseActivity {
                         SharedPreferences sharedPreferences = getSharedPreferences("PREF", MODE_PRIVATE);
                         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("user_token", response.body().getAccess_token());
+                        String userToken = response.body().getAccess_token();
                         //Get user info
                         Call<UserResponse> call1 = apiInterface.getUser("Bearer " + response.body().getAccess_token());
                         call1.enqueue(new Callback<UserResponse>() {
@@ -133,6 +134,7 @@ public class LoginActivity extends BaseActivity {
                                 editor.putString("realm", response.body().getRealm());
                                 editor.putString("realmId", response.body().getRealmId());
                                 editor.putString("username", response.body().getUsername());
+                                editor.putString("user_token", userToken);
                                 editor.apply();
                                 //Start HomeActivity
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

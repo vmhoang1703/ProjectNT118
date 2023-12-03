@@ -9,6 +9,8 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+
+import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.response.LoginResponse;
 import com.example.nt118project.response.UserResponse;
 
@@ -33,6 +35,7 @@ public interface APIInterface {
     Call<UserResponse> getUser(
             @Header("Authorization") String authToken
     );
-    //@GET("api/master/asset/{assetID}")
-    //Call<Asset> getAsset(@Path("assetID") String assetID, @Header("Authorization") String auth);
+    @GET("api/master/asset/{assetID}")
+    Call<AssetResponse> getAsset(@Path("assetID") String assetID, @Header("Authorization") String auth);
+
 }

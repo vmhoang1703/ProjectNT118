@@ -97,24 +97,24 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/day"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="°C"
-                    android:textSize="60dp" />
+                    android:textSize="55dp" />
 
                 <TextView
                     android:id="@+id/temperatureNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/day"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:layout_toLeftOf="@+id/temperatureUnit"
                     android:text="27"
-                    android:textSize="60dp" />
+                    android:textSize="55dp" />
 
                 <TextView
-                    android:id="@+id/locationText"
+                    android:id="@+id/placeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -126,7 +126,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@mipmap/location_img"
-                    android:layout_toLeftOf="@+id/locationText"
+                    android:layout_toLeftOf="@+id/placeText"
                     android:layout_below="@+id/temperatureNumber"
                     android:layout_marginRight="10dp"/>
             </RelativeLayout>

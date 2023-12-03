@@ -5,11 +5,21 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nt118project.response.AssetResponse;
+import com.example.nt118project.util.APIClient;
+import com.example.nt118project.util.APIInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HomeActivity extends AppCompatActivity {
     TextView home_username;
+    TextView temperatureNumber, temperatureFigure, rainfallFigure, humidityFigure, windDirectionFigure, windSpeedFigure, placeText;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -18,8 +28,80 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         home_username = findViewById(R.id.usernameText);
+        temperatureNumber = findViewById(R.id.temperatureNumber);
+        temperatureFigure = findViewById(R.id.temperatureFigure);
+        humidityFigure = findViewById(R.id.humidityFigure);
+        rainfallFigure = findViewById(R.id.rainfallFigure);
+        windDirectionFigure = findViewById(R.id.windDirectionFigure);
+        windSpeedFigure = findViewById(R.id.windSpeedFigure);
+        placeText = findViewById(R.id.placeText);
+
         SharedPreferences sharedPreferences = getSharedPreferences("PREF", MODE_PRIVATE);
-        ;
-        home_username.setText(getString(R.string.welcome) + sharedPreferences.getString("username", ""));
+        home_username.setText(sharedPreferences.getString("username", ""));
+
+        String userToken = sharedPreferences.getString("user_token", "");
+        // Lấy assetId từ SharedPreferences hoặc từ nơi bạn lưu trữ nó
+        String assetId = "5zI6XqkQVSfdgOrZ1MyWEf";
+
+        // Gọi API để lấy dữ liệu temperature
+        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<AssetResponse> call = apiInterface.getAsset(assetId,"Bearer " + userToken);
+        call.enqueue(new Callback<AssetResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<AssetResponse> call, @NonNull Response<AssetResponse> response) {
+                if (response.isSuccessful() && response.code() == 200 && response.body() != null) {
+                    AssetResponse.Attributes attributes = response.body().getAttributes();
+
+                    // Hiển thị temperature ở Sum
+                    double temperatureValue = attributes.getTemperature().getValue();
+                    String formattedTemperature = String.format("%.2f", temperatureValue);
+                    temperatureNumber.setText(formattedTemperature);
+
+                    // Hiển thị temperature
+                    temperatureFigure.setText(formattedTemperature);
+
+                    // Hiển thị rainfall
+                    double rainfallValue = attributes.getRainfall().getValue();
+                    String formattedRainfall = String.format("%.2f", rainfallValue);
+                    rainfallFigure.setText(formattedRainfall);
+
+                    // Hiển thị humidity
+                    int humidityValue = attributes.getHumidity().getValue();
+                    String formattedHumidity = String.valueOf(humidityValue);
+                    humidityFigure.setText(formattedHumidity);
+
+                    // Hiển thị wind direction
+                    int windDirectionValue = attributes.getWindDirection().getValue();
+                    String formattedWindDirection = String.valueOf(windDirectionValue);
+                    windDirectionFigure.setText(formattedWindDirection);
+
+
+                    // Hiển thị wind speed
+                    double windSpeedValue = attributes.getWindSpeed().getValue();
+                    String formattedWindSpeed = String.format("%.2f", windSpeedValue);
+                    windSpeedFigure.setText(formattedWindSpeed);
+
+                    //Hiển thị Place
+                    String placeStringValue = attributes.getPlace().getValue();
+                    placeText.setText(placeStringValue);
+
+                } else {
+                    // Xử lý khi có lỗi hoặc response code không phải 200
+                    temperatureNumber.setText("N/A");
+                    rainfallFigure.setText("N/A");
+                    humidityFigure.setText("N/A");
+                    windDirectionFigure.setText("N/A");
+                    windSpeedFigure.setText("N/A");
+                    placeText.setText("N/A");
+                }
+            }
+
+
+            @Override
+            public void onFailure(@NonNull Call<AssetResponse> call, @NonNull Throwable t) {
+                // Xử lý khi có lỗi
+                temperatureNumber.setText("N/A");
+            }
+        });
     }
 }
