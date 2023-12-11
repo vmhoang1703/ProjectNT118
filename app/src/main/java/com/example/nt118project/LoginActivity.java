@@ -90,7 +90,7 @@ public class LoginActivity extends BaseActivity {
 
         ImageView back = findViewById(R.id.back_arrow);
         back.setOnClickListener(view -> {
-            Intent backIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
+            Intent backIntent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(backIntent);
             finish();
         });
@@ -99,7 +99,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 // Tạo Intent để mở màn hình đăng nhập
-                Intent backIntent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                Intent backIntent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(backIntent);
             }
         });
@@ -166,7 +166,7 @@ public class LoginActivity extends BaseActivity {
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ResetPwdActivity.class);
                 startActivity(intent);
             }
         });

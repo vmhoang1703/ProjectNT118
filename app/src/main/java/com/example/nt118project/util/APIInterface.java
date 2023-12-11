@@ -12,6 +12,8 @@ import retrofit2.http.Path;
 
 import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.response.LoginResponse;
+import com.example.nt118project.response.Map;
+import com.example.nt118project.response.MapResponse;
 import com.example.nt118project.response.UserResponse;
 
 public interface APIInterface {
@@ -37,5 +39,10 @@ public interface APIInterface {
     );
     @GET("api/master/asset/{assetID}")
     Call<AssetResponse> getAsset(@Path("assetID") String assetID, @Header("Authorization") String auth);
-
+    @GET("/api/master/map/js")
+    Call<MapResponse> getMap(
+            @Header("Authorization") String auth
+    );
+    @GET("api/master/map")
+    Call<Map> getMap();
 }

@@ -1,14 +1,18 @@
 package com.example.nt118project;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nt118project.map.MapFragment;
 import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.util.APIClient;
 import com.example.nt118project.util.APIInterface;
@@ -19,6 +23,7 @@ import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
     TextView home_username;
+    public static String token;
     TextView temperatureNumber, temperatureFigure, rainfallFigure, humidityFigure, windDirectionFigure, windSpeedFigure, placeText;
 
     @SuppressLint("SetTextI18n")
@@ -26,6 +31,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Intent current_intent = getIntent();
+        HomeActivity.token = current_intent.getStringExtra("access_token");
 
         home_username = findViewById(R.id.usernameText);
         temperatureNumber = findViewById(R.id.temperatureNumber);
@@ -35,6 +42,13 @@ public class HomeActivity extends AppCompatActivity {
         windDirectionFigure = findViewById(R.id.windDirectionFigure);
         windSpeedFigure = findViewById(R.id.windSpeedFigure);
         placeText = findViewById(R.id.placeText);
+        RelativeLayout mapNavi = findViewById(R.id.mapNavi);
+        RelativeLayout homeNavi = findViewById(R.id.homeNavi);
+        RelativeLayout graphNavi = findViewById(R.id.graphNavi);
+        RelativeLayout personalNavi = findViewById(R.id.personalNavi);
+
+        // Set OnClickListener for the "Map" icon
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("PREF", MODE_PRIVATE);
         home_username.setText(sharedPreferences.getString("username", ""));
@@ -75,7 +89,6 @@ public class HomeActivity extends AppCompatActivity {
                     String formattedWindDirection = String.valueOf(windDirectionValue);
                     windDirectionFigure.setText(formattedWindDirection);
 
-
                     // Hiển thị wind speed
                     double windSpeedValue = attributes.getWindSpeed().getValue();
                     String formattedWindSpeed = String.format("%.2f", windSpeedValue);
@@ -96,11 +109,42 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
 
-
             @Override
             public void onFailure(@NonNull Call<AssetResponse> call, @NonNull Throwable t) {
                 // Xử lý khi có lỗi
                 temperatureNumber.setText("N/A");
+            }
+        });
+        mapNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(HomeActivity.this, MapFragment.class);
+                startActivity(intent);
+            }
+        });
+        homeNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        graphNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
+                startActivity(intent);
+            }
+        });
+        personalNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(HomeActivity.this, UserInformationActivity.class);
+                startActivity(intent);
             }
         });
     }
