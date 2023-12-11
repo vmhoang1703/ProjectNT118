@@ -32,20 +32,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hi_en"
-                android:layout_toRightOf="@+id/user_img"
+                android:layout_toEndOf="@+id/user_img"
                 android:layout_centerVertical="true"
-                android:textSize="24dp"
-                android:layout_marginLeft="14dp"/>
+                android:textSize="24sp"
+                android:layout_marginStart="14dp"/>
 
             <TextView
                 android:id="@+id/usernameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/hiText"
+                android:layout_toEndOf="@+id/hiText"
                 android:layout_centerVertical="true"
                 android:text="admin"
-                android:textSize="24dp"
-                android:layout_marginLeft="7dp"/>
+                android:textSize="24sp"
+                android:layout_marginStart="7dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mostly sunny"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:layout_below="@+id/weatherImg"
                     android:layout_marginTop="10dp"/>
             </RelativeLayout>
@@ -80,7 +80,7 @@
                 android:id="@+id/summaryInfo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/summaryInfo1"
+                android:layout_toEndOf="@+id/summaryInfo1"
                 android:layout_centerVertical="true">
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="Wednesday"
-                    android:textSize="24dp" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/temperatureUnit"
@@ -99,8 +99,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="°C"
-                    android:textSize="55dp" />
+                    android:text="@string/degreeC"
+                    android:textSize="55sp" />
 
                 <TextView
                     android:id="@+id/temperatureNumber"
@@ -109,9 +109,9 @@
                     android:layout_below="@+id/day"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_toLeftOf="@+id/temperatureUnit"
+                    android:layout_toStartOf="@+id/temperatureUnit"
                     android:text="27"
-                    android:textSize="55dp" />
+                    android:textSize="55sp" />
 
                 <TextView
                     android:id="@+id/placeText"
@@ -120,15 +120,15 @@
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/temperatureNumber"
                     android:text="Bien Hoa"
-                    android:textSize="24dp"/>
+                    android:textSize="24sp"/>
 
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@mipmap/location_img"
-                    android:layout_toLeftOf="@+id/placeText"
+                    android:layout_toStartOf="@+id/placeText"
                     android:layout_below="@+id/temperatureNumber"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginEnd="10dp"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -164,7 +164,7 @@
                         android:layout_width="160dp"
                         android:layout_height="160dp"
                         android:layout_marginBottom="7dp"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginStart="7dp"
                         android:background="@drawable/items_bg"
                         android:elevation="5dp">
 
@@ -182,11 +182,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="13dp"
-                            android:layout_toRightOf="@+id/rainfallIcon"
-                            android:text="RAINFALL"
-                            android:textSize="13dp"/>
+                            android:layout_toEndOf="@+id/rainfallIcon"
+                            android:text="@string/rainfall_en"
+                            android:textSize="13sp"/>
 
                         <TextView
                             android:id="@+id/rainfallFigure"
@@ -194,15 +194,15 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="7"
-                            android:textSize="40dp"
+                            android:textSize="40sp"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="mm"
+                            android:text="@string/mm"
                             android:textStyle="bold"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="7dp"
                             android:layout_centerHorizontal="true"/>
@@ -213,10 +213,10 @@
                         android:id="@+id/temperatureInfo"
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:layout_toRightOf="@+id/rainfallInfo"
-                        android:layout_marginLeft="24dp"
+                        android:layout_toEndOf="@+id/rainfallInfo"
+                        android:layout_marginStart="24dp"
                         android:layout_marginBottom="7dp"
-                        android:layout_marginRight="7dp"
+                        android:layout_marginEnd="7dp"
                         android:background="@drawable/items_bg"
                         android:elevation="5dp">
 
@@ -234,11 +234,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="13dp"
-                            android:layout_toRightOf="@+id/temperatureIcon"
-                            android:text="TEMPERATURE"
-                            android:textSize="13dp"/>
+                            android:layout_toEndOf="@+id/temperatureIcon"
+                            android:text="@string/temperature_en"
+                            android:textSize="13sp"/>
 
                         <TextView
                             android:id="@+id/temperatureFigure"
@@ -246,15 +246,15 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="27"
-                            android:textSize="40dp"
+                            android:textSize="40sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="°C"
+                            android:text="@string/degreeC"
                             android:textStyle="bold"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="7dp"
                             android:layout_centerHorizontal="true"/>
@@ -274,7 +274,7 @@
                         android:layout_width="160dp"
                         android:layout_height="160dp"
                         android:layout_marginBottom="7dp"
-                        android:layout_marginLeft="7dp"
+                        android:layout_marginStart="7dp"
                         android:background="@drawable/items_bg"
                         android:elevation="5dp">
 
@@ -292,11 +292,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="13dp"
-                            android:layout_toRightOf="@+id/humidityIcon"
-                            android:text="HUMIDITY"
-                            android:textSize="13dp"/>
+                            android:layout_toEndOf="@+id/humidityIcon"
+                            android:text="@string/humidity_en"
+                            android:textSize="13sp"/>
 
                         <TextView
                             android:id="@+id/humidityFigure"
@@ -304,15 +304,15 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="79"
-                            android:textSize="40dp"
+                            android:textSize="40sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="%"
+                            android:text="@string/percent"
                             android:textStyle="bold"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="7dp"
                             android:layout_centerHorizontal="true"/>
@@ -323,10 +323,10 @@
                         android:id="@+id/windDirectionInfo"
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:layout_toRightOf="@+id/humidityInfo"
-                        android:layout_marginLeft="24dp"
+                        android:layout_toEndOf="@+id/humidityInfo"
+                        android:layout_marginStart="24dp"
                         android:layout_marginBottom="7dp"
-                        android:layout_marginRight="7dp"
+                        android:layout_marginEnd="7dp"
                         android:background="@drawable/items_bg"
                         android:elevation="5dp">
 
@@ -344,11 +344,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="13dp"
-                            android:layout_toRightOf="@+id/windDirectionIcon"
-                            android:text="WIND DIRECTION"
-                            android:textSize="13dp" />
+                            android:layout_toEndOf="@+id/windDirectionIcon"
+                            android:text="@string/wind_direction_en"
+                            android:textSize="13sp" />
 
                         <TextView
                             android:id="@+id/windDirectionFigure"
@@ -356,15 +356,15 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="120"
-                            android:textSize="40dp"
+                            android:textSize="40sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="degrees"
+                            android:text="@string/degrees_en"
                             android:textStyle="bold"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="7dp"
                             android:layout_centerHorizontal="true"/>
@@ -403,11 +403,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:layout_marginTop="13dp"
-                            android:layout_toRightOf="@+id/windSpeedIcon"
-                            android:text="WIND SPEED"
-                            android:textSize="13dp"/>
+                            android:layout_toEndOf="@+id/windSpeedIcon"
+                            android:text="@string/wind_speed_en"
+                            android:textSize="13sp"/>
 
                         <TextView
                             android:id="@+id/windSpeedFigure"
@@ -415,15 +415,15 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="3.09"
-                            android:textSize="40dp"
+                            android:textSize="40sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="m/s"
+                            android:text="@string/m_s"
                             android:textStyle="bold"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:layout_alignParentBottom="true"
                             android:layout_marginBottom="7dp"
                             android:layout_centerHorizontal="true"/>
@@ -434,110 +434,110 @@
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/menu_bg">
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true">
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/menu_bg">
             <RelativeLayout
-                android:id="@+id/homeNavi"
-                android:layout_width="53.43dp"
-                android:layout_height="38dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true">
-                <ImageView
-                    android:id="@+id/homeIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/home"
-                    android:layout_centerHorizontal="true"/>
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+                <RelativeLayout
+                    android:id="@+id/homeNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true">
+                    <ImageView
+                        android:id="@+id/homeIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/home"
+                        android:layout_centerHorizontal="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:textSize="10dp"
-                    android:layout_below="@+id/homeIcon"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/homeNavi_en"
+                        android:textSize="11sp"
+                        android:layout_below="@+id/homeIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/graphNavi"
-                android:layout_width="53.43dp"
-                android:layout_height="38dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/homeNavi"
-                android:layout_marginLeft="30dp">
-                <ImageView
-                    android:id="@+id/graphIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/graph"
-                    android:layout_centerHorizontal="true"/>
+                <RelativeLayout
+                    android:id="@+id/graphNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/homeNavi"
+                    android:layout_marginStart="30dp">
+                    <ImageView
+                        android:id="@+id/graphIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/graph"
+                        android:layout_centerHorizontal="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Graph"
-                    android:textSize="10dp"
-                    android:layout_below="@+id/graphIcon"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/graphNavi_en"
+                        android:textSize="11sp"
+                        android:layout_below="@+id/graphIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/mapNavi"
-                android:layout_width="53.43dp"
-                android:layout_height="38dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/graphNavi"
-                android:layout_marginLeft="30dp">
-                <ImageView
-                    android:id="@+id/mapIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/location_img"
-                    android:layout_centerHorizontal="true"/>
+                <RelativeLayout
+                    android:id="@+id/mapNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/graphNavi"
+                    android:layout_marginStart="30dp">
+                    <ImageView
+                        android:id="@+id/mapIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/location_img"
+                        android:layout_centerHorizontal="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Map"
-                    android:textSize="10dp"
-                    android:layout_below="@+id/mapIcon"
-                    android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mapNavi_en"
+                        android:textSize="11sp"
+                        android:layout_below="@+id/mapIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/personalNavi"
-                android:layout_width="53.43dp"
-                android:layout_height="38dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/mapNavi"
-                android:layout_marginLeft="30dp">
-                <ImageView
-                    android:id="@+id/personalIcon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@mipmap/personal"
-                    android:layout_centerHorizontal="true"/>
+                <RelativeLayout
+                    android:id="@+id/personalNavi"
+                    android:layout_width="53.43dp"
+                    android:layout_height="38dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/mapNavi"
+                    android:layout_marginStart="30dp">
+                    <ImageView
+                        android:id="@+id/personalIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/personal"
+                        android:layout_centerHorizontal="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Profile"
-                    android:textSize="10dp"
-                    android:layout_below="@+id/personalIcon"
-                    android:layout_centerHorizontal="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profileNavi_en"
+                        android:textSize="11sp"
+                        android:layout_below="@+id/personalIcon"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
             </RelativeLayout>
 
         </RelativeLayout>
-
-    </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>

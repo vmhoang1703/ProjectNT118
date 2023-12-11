@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
+    tools:context=".GraphActivity"
     android:background="@drawable/background1">
 
 
@@ -16,7 +16,7 @@
         android:text="@string/graph_en"
         android:textColor="@color/black"
         android:layout_marginTop="12dp"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
     <ImageView
         android:layout_width="45dp"
@@ -46,29 +46,28 @@
             android:layout_centerHorizontal="true"/>
 
         <androidx.core.widget.NestedScrollView
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/graphImg"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="14dp">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:id="@+id/attr_time_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp">
+                    android:layout_marginTop="24dp"
+                    android:layout_centerHorizontal="true">
 
                     <!-- Attributes Spinner -->
                     <Spinner
                         android:id="@+id/attributesSpinner"
                         android:layout_width="160dp"
                         android:layout_height="60dp"
-                        android:paddingLeft="5dp"
-                        android:layout_alignParentStart="true"
+                        android:paddingStart="5dp"
                         android:background="@drawable/spinner_bg"/>
 
                     <!-- Timeframe Spinner -->
@@ -76,8 +75,9 @@
                         android:id="@+id/timeframeSpinner"
                         android:layout_width="160dp"
                         android:layout_height="60dp"
-                        android:paddingLeft="5dp"
-                        android:layout_alignParentEnd="true"
+                        android:paddingStart="5dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@+id/attributesSpinner"
                         android:background="@drawable/spinner_bg"/>
                 </RelativeLayout>
 
@@ -93,9 +93,9 @@
                         android:id="@+id/startingDateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Starting date"
-                        android:textSize="18dp"
-                        android:paddingLeft="18.82dp"
+                        android:text="@string/starting_date_en"
+                        android:textSize="18sp"
+                        android:paddingStart="18.82dp"
                         android:layout_centerVertical="true"
                         android:textColor="#ACABAB"/>
                     <ImageView
@@ -119,9 +119,9 @@
                         android:id="@+id/endingDateTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ending date"
-                        android:textSize="18dp"
-                        android:paddingLeft="18.82dp"
+                        android:text="@string/ending_date_en"
+                        android:textSize="18sp"
+                        android:paddingStart="18.82dp"
                         android:layout_centerVertical="true"
                         android:textColor="#ACABAB"/>
                     <ImageView
@@ -143,20 +143,30 @@
                     android:text="@string/show_en"
                     android:textColor="#9cb6c4"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:elevation="7dp"
-                    android:layout_marginTop="30dp"/>
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"/>
 
 
-                <TextView
+<!--                <TextView-->
+<!--                    android:id="@+id/graph"-->
+<!--                    android:layout_width="360dp"-->
+<!--                    android:layout_height="360dp"-->
+<!--                    android:layout_below="@+id/show_btn"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginTop="50dp"-->
+<!--                    android:layout_marginBottom="100dp"/>-->
+                <com.jjoe64.graphview.GraphView
                     android:id="@+id/graph"
-                    android:layout_width="360dp"
+                    android:layout_width="match_parent"
                     android:layout_height="360dp"
                     android:layout_below="@+id/show_btn"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="50dp"
-                    android:layout_marginBottom="100dp"/>
+                    android:layout_marginBottom="150dp"
+                    android:visibility="gone"/>
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -186,8 +196,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textSize="10dp"
+                        android:text="@string/homeNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/homeIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -197,8 +207,8 @@
                     android:layout_width="53.43dp"
                     android:layout_height="38dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/homeNavi"
-                    android:layout_marginLeft="30dp">
+                    android:layout_toEndOf="@+id/homeNavi"
+                    android:layout_marginStart="30dp">
                     <ImageView
                         android:id="@+id/graphIcon"
                         android:layout_width="24dp"
@@ -209,8 +219,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Graph"
-                        android:textSize="10dp"
+                        android:text="@string/graphNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/graphIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -220,8 +230,8 @@
                     android:layout_width="53.43dp"
                     android:layout_height="38dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/graphNavi"
-                    android:layout_marginLeft="30dp">
+                    android:layout_toEndOf="@+id/graphNavi"
+                    android:layout_marginStart="30dp">
                     <ImageView
                         android:id="@+id/mapIcon"
                         android:layout_width="24dp"
@@ -232,8 +242,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Map"
-                        android:textSize="10dp"
+                        android:text="@string/mapNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/mapIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -243,8 +253,8 @@
                     android:layout_width="53.43dp"
                     android:layout_height="38dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/mapNavi"
-                    android:layout_marginLeft="30dp">
+                    android:layout_toEndOf="@+id/mapNavi"
+                    android:layout_marginStart="30dp">
                     <ImageView
                         android:id="@+id/personalIcon"
                         android:layout_width="24dp"
@@ -255,8 +265,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
-                        android:textSize="10dp"
+                        android:text="@string/profileNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/personalIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>

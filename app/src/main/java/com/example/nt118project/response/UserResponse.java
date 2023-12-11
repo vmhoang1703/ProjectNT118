@@ -1,12 +1,20 @@
 package com.example.nt118project.response;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserResponse {
     private String id;
     private String realm;
     private String realmId;
-    private String email;
+    @SerializedName("email")
+    public String email;
     private long createdOn;
     private boolean serviceAccount;
+    @SerializedName("firstName")
+    public String firstName;
+    @SerializedName("lastName")
+    public String lastName;
+    @SerializedName("username")
     public String username;
     public String getId() {
         return id;
@@ -26,5 +34,11 @@ public class UserResponse {
 
     public String getUsername() {
         return username;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
     }
 }

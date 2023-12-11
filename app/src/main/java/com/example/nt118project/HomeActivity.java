@@ -1,8 +1,11 @@
 package com.example.nt118project;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -101,6 +104,26 @@ public class HomeActivity extends AppCompatActivity {
             public void onFailure(@NonNull Call<AssetResponse> call, @NonNull Throwable t) {
                 // Xử lý khi có lỗi
                 temperatureNumber.setText("N/A");
+            }
+        });
+
+        RelativeLayout graphNavi  = findViewById(R.id.graphNavi);
+        graphNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+
+        RelativeLayout personalNavi  = findViewById(R.id.personalNavi);
+        personalNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Profile.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
             }
         });
     }

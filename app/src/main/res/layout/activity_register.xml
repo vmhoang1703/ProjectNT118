@@ -13,7 +13,7 @@
         android:scaleType="centerInside"
         android:src="@drawable/english"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_margin="16dp"/>
 
     <ImageView
@@ -43,7 +43,7 @@
         android:layout_marginTop="12dp"
         android:text="@string/back_en"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/welcome_text"
@@ -55,7 +55,7 @@
         android:layout_marginTop="75dp"
         android:text="@string/welcome_text_en"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/signup_text"
@@ -67,7 +67,7 @@
         android:layout_marginTop="105dp"
         android:text="@string/signup_text_en"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -80,7 +80,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="5dp"
         android:text="@string/username_text_en"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <ImageView
         android:layout_width="25dp"
@@ -99,11 +99,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:hint="@string/type_hint_en"
-        android:paddingLeft="50px"
-        android:textSize="15dp"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
         android:inputType="text"
         android:background="@drawable/borderbtn"
-        android:layout_above="@+id/textViewEmail"/>
+        android:layout_above="@+id/textViewEmail"
+        android:elevation="7dp"/>
 
     <TextView
         android:id="@+id/textViewEmail"
@@ -115,7 +116,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="5dp"
         android:text="@string/email_text"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <ImageView
         android:layout_width="25dp"
@@ -135,11 +136,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:hint="@string/type_hint_en"
-        android:paddingLeft="50px"
-        android:textSize="15dp"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
         android:inputType="textEmailAddress"
         android:background="@drawable/borderbtn"
-        android:layout_above="@+id/textViewPassword"/>
+        android:layout_above="@+id/textViewPassword"
+        android:elevation="7dp"/>
 
     <TextView
         android:id="@+id/textViewPassword"
@@ -151,7 +153,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="3dp"
         android:text="@string/password_text_en"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <ImageView
         android:layout_width="25dp"
@@ -171,11 +173,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:hint="@string/type_hint_en"
-        android:paddingLeft="50px"
-        android:textSize="15dp"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
         android:inputType="textPassword"
         android:background="@drawable/borderbtn"
-        android:layout_above="@+id/textViewConfirmPassword"/>
+        android:layout_above="@+id/textViewConfirmPassword"
+        android:elevation="7dp"/>
 
     <TextView
         android:id="@+id/textViewConfirmPassword"
@@ -187,7 +190,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginBottom="5dp"
         android:text="@string/confirm_password_text_en"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <ImageView
         android:layout_width="25dp"
@@ -206,11 +209,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         android:hint="@string/type_hint_en"
-        android:paddingLeft="50px"
-        android:textSize="15dp"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
         android:inputType="textPassword"
         android:background="@drawable/borderbtn"
-        android:layout_above="@+id/signup_btn"/>
+        android:layout_above="@+id/signup_btn"
+        android:elevation="7dp"/>
 
     <TextView
         android:id="@+id/signup_btn"
@@ -223,7 +227,7 @@
         android:text="@string/signup_upper_en"
         android:textColor="#9cb6c4"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:elevation="7dp"/>
 

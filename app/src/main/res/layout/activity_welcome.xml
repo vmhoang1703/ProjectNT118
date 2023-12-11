@@ -14,7 +14,7 @@
         android:scaleType="centerInside"
         android:src="@drawable/english"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentEnd="true" />
 
 
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
         android:text="@string/signin_text_en"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
     <TextView
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wc_text_en"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_above="@+id/googleSignIn"
         android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true" />
@@ -64,7 +64,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="@string/gg_signin_en"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
@@ -82,7 +82,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:text="@string/ac_signin_en"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:background="@drawable/borderbtn"
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/or_text_en"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_above="@+id/linktoregister"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp" />
@@ -109,6 +109,6 @@
         android:layout_marginBottom="50dp"
         android:text="@string/LinkToRegister_en"
         android:textAlignment="center"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
 </RelativeLayout>

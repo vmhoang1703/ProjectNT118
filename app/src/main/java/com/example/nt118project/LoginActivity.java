@@ -76,7 +76,7 @@ public class LoginActivity extends BaseActivity {
         languageButton = findViewById(R.id.languageButton);
         welcomeBackText=findViewById(R.id.welcome_text);
         signinText=findViewById(R.id.signin_text);
-        emailText=findViewById(R.id.textViewEmail);
+        usernameText=findViewById(R.id.textViewUsername);
         passwordText=findViewById(R.id.textViewPassword);
         forgotPass=findViewById(R.id.forgotpassword);
         typeHintText=findViewById(R.id.welcome_text);
@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity {
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        username = findViewById(R.id.editTextEmail);
+        username = findViewById(R.id.editTextUsername);
         password = findViewById(R.id.editTextPassword);
 
         ImageView back = findViewById(R.id.back_arrow);
@@ -210,7 +210,7 @@ public class LoginActivity extends BaseActivity {
             fadeView(backText, R.anim.fade_out, R.string.back_en);
             fadeView(welcomeBackText, R.anim.fade_out, R.string.welcome_back_text_en);
             fadeView(signinText, R.anim.fade_out, R.string.signin1_text_en);
-            fadeView(emailText, R.anim.fade_out, R.string.email_text);
+            fadeView(usernameText, R.anim.fade_out, R.string.username_text_en);
             fadeView(passwordText, R.anim.fade_out, R.string.password_text_en);
             fadeView(forgotPass, R.anim.fade_out, R.string.ForgotPassword_en);
             fadeView(signinUppreText, R.anim.fade_out, R.string.signin_upper_en);
@@ -218,7 +218,7 @@ public class LoginActivity extends BaseActivity {
             fadeView(backText, R.anim.fade_out, R.string.back_vn);
             fadeView(welcomeBackText, R.anim.fade_out, R.string.welcome_back_text_vn);
             fadeView(signinText, R.anim.fade_out, R.string.signin1_text_vn);
-            fadeView(emailText, R.anim.fade_out, R.string.email_text);
+            fadeView(usernameText, R.anim.fade_out, R.string.username_text_en);
             fadeView(passwordText, R.anim.fade_out, R.string.password_text_vn);
             fadeView(forgotPass, R.anim.fade_out, R.string.ForgotPassword_vn);
             fadeView(signinUppreText, R.anim.fade_out, R.string.signin_upper_vn);
