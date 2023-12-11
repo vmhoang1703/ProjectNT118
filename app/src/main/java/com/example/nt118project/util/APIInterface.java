@@ -14,6 +14,8 @@ import com.example.nt118project.request.GraphRequestBody;
 import com.example.nt118project.response.GraphResponse;
 import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.response.LoginResponse;
+import com.example.nt118project.response.Map;
+import com.example.nt118project.response.MapResponse;
 import com.example.nt118project.response.UserResponse;
 import com.google.gson.JsonArray;
 
@@ -48,4 +50,12 @@ public interface APIInterface {
             @Header("Authorization") String auth,
             @Body GraphRequestBody requestBody
     );
+
+    @GET("/api/master/map/js")
+    Call<MapResponse> getMap(
+            @Header("Authorization") String auth
+    );
+    @GET("api/master/map")
+    Call<Map> getMap();
+
 }

@@ -35,8 +35,11 @@ android {
 dependencies {
 
     // Import the BoM for the Firebase platform
+    implementation ("org.osmdroid:osmdroid-android:6.1.14")
+
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
@@ -57,7 +60,8 @@ dependencies {
     implementation ("com.jjoe64:graphview:4.2.2")
     implementation ("com.squareup.okhttp3:okhttp:4.12.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.google.code.gson:gson:2.10")
+    implementation ("com.google.code.gson:gson:2.10.1")
+
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation ("androidx.security:security-crypto:1.1.0-alpha06")

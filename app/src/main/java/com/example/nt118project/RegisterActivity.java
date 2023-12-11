@@ -35,9 +35,7 @@ public class RegisterActivity extends BaseActivity {
     private EditText pwd;
     private EditText rePwd;
     private ImageButton languageButton;
-
     private TextView backText;
-    public EditText editTextUsername, editTextEmail, editTextPassword, editTextConfirmPassword;
     private TextView signupBtn;
     private TextView welcomeText, signupText, usernameText, emailText, passwordText, cfPasswordText, typeHintText, signupUppreText;
     private boolean isEnglish = true;
@@ -58,14 +56,8 @@ public class RegisterActivity extends BaseActivity {
         signupUppreText = findViewById(R.id.signup_btn);
 
         //Back button
-        back = findViewById(R.id.back_arrow);
-        back.setOnClickListener(view -> {
-            finish();
-        });
-        backText = findViewById(R.id.back_text);
-        backText.setOnClickListener(view -> {
-            finish();
-        });
+        back.setOnClickListener(v -> handleBackButtonClick());
+        backText.setOnClickListener(v -> handleBackButtonClick());
 
         //Input data
         username = findViewById(R.id.editTextUsername);
@@ -100,57 +92,7 @@ public class RegisterActivity extends BaseActivity {
                 updateUI();
             }
         });
-        mAuth = FirebaseAuth.getInstance();
 
-
-
-        editTextUsername = findViewById(R.id.editTextUsername);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
-
-        signupBtn = findViewById(R.id.signup_btn);
-        signupBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username, email, password, confirmPassword;
-                username = String.valueOf(editTextUsername.getText());
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
-                confirmPassword = String.valueOf(editTextConfirmPassword.getText());
-
-
-                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
-                    Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (!password.equals(confirmPassword)) {
-                    Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Đăng ký thành công
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    Toast.makeText(RegisterActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
-                                    // Chuyển sang màn hình chính hoặc màn hình đăng nhập
-                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    // Đăng ký thất bại
-                                    Exception e = task.getException();
-                                    Toast.makeText(RegisterActivity.this, "Authentication failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        });
         // Gọi hàm để đặt ngôn ngữ mặc định
         updateUI();
     }
@@ -215,6 +157,9 @@ public class RegisterActivity extends BaseActivity {
             }
         });
         textView.startAnimation(animation);
+    }
+    private void handleBackButtonClick() {
+        finish();
     }
 }
 
