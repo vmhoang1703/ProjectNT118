@@ -12,7 +12,7 @@
         android:text="@string/profile_en"
         android:textColor="@color/black"
         android:layout_marginTop="12dp"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 
 <!--    <ImageView-->
 <!--        android:id="@+id/back_arrow"-->
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:text="vmhoang1703"
             android:layout_centerHorizontal="true"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:layout_below="@id/avatar"
             android:layout_marginTop="5dp"
             android:textColor="@color/black"/>
@@ -88,7 +88,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginBottom="5dp"
             android:text="@string/firstname_en"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/showFirstname"
@@ -96,11 +96,12 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:paddingLeft="50px"
-            android:textSize="15dp"
-            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
             android:background="@drawable/borderbtn"
-            android:layout_above="@+id/textViewLastname"/>
+            android:layout_above="@+id/textViewLastname"
+            android:elevation="7dp"
+            android:gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/textViewLastname"
@@ -112,7 +113,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginBottom="5dp"
             android:text="@string/lastname_en"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/showLastname"
@@ -120,11 +121,12 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:paddingLeft="50px"
-            android:textSize="15dp"
-            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
             android:background="@drawable/borderbtn"
-            android:layout_above="@+id/textViewUsername"/>
+            android:layout_above="@+id/textViewUsername"
+            android:elevation="7dp"
+            android:gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/textViewUsername"
@@ -136,7 +138,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginBottom="5dp"
             android:text="@string/username_text_en"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:layout_width="25dp"
@@ -154,11 +156,12 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:paddingLeft="50px"
-            android:textSize="15dp"
-            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textSize="18sp"
             android:background="@drawable/borderbtn"
-            android:layout_above="@+id/textViewEmail"/>
+            android:layout_above="@+id/textViewEmail"
+            android:elevation="7dp"
+            android:gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/textViewEmail"
@@ -170,13 +173,13 @@
             android:layout_marginStart="30dp"
             android:layout_marginBottom="5dp"
             android:text="@string/email_text"
-            android:textSize="18dp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/mail"
-            android:layout_above="@+id/edit_btn"
+            android:layout_above="@+id/logout_btn"
             android:layout_marginBottom="64dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="45dp"
@@ -188,26 +191,28 @@
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
+            android:paddingLeft="20dp"
             android:layout_marginBottom="50dp"
-            android:textSize="15dp"
-            android:inputType="textEmailAddress"
+            android:textSize="18sp"
             android:background="@drawable/borderbtn"
-            android:layout_above="@+id/edit_btn"/>
+            android:layout_above="@+id/logout_btn"
+            android:elevation="7dp"
+            android:gravity="center_vertical"/>
 
 
 
         <TextView
-            android:id="@+id/edit_btn"
+            android:id="@+id/logout_btn"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="@drawable/shadowbtn"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="110dp"
-            android:text="@string/edit_en"
+            android:text="@string/logout_en"
             android:textColor="#9cb6c4"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:elevation="7dp"/>
 
@@ -237,8 +242,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textSize="10dp"
+                        android:text="@string/homeNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/homeIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -248,8 +253,8 @@
                     android:layout_width="53.43dp"
                     android:layout_height="38dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/homeNavi"
-                    android:layout_marginLeft="30dp">
+                    android:layout_toEndOf="@+id/homeNavi"
+                    android:layout_marginStart="30dp">
                     <ImageView
                         android:id="@+id/graphIcon"
                         android:layout_width="24dp"
@@ -260,8 +265,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Graph"
-                        android:textSize="10dp"
+                        android:text="@string/graphNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/graphIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -271,8 +276,8 @@
                     android:layout_width="53.43dp"
                     android:layout_height="38dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/graphNavi"
-                    android:layout_marginLeft="30dp">
+                    android:layout_toEndOf="@+id/graphNavi"
+                    android:layout_marginStart="30dp">
                     <ImageView
                         android:id="@+id/mapIcon"
                         android:layout_width="24dp"
@@ -283,8 +288,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Map"
-                        android:textSize="10dp"
+                        android:text="@string/mapNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/mapIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>
@@ -294,8 +299,8 @@
                     android:layout_width="53.43dp"
                     android:layout_height="38dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/mapNavi"
-                    android:layout_marginLeft="30dp">
+                    android:layout_toEndOf="@+id/mapNavi"
+                    android:layout_marginStart="30dp">
                     <ImageView
                         android:id="@+id/personalIcon"
                         android:layout_width="24dp"
@@ -306,8 +311,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
-                        android:textSize="10dp"
+                        android:text="@string/profileNavi_en"
+                        android:textSize="11sp"
                         android:layout_below="@+id/personalIcon"
                         android:layout_centerHorizontal="true"/>
                 </RelativeLayout>

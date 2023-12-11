@@ -115,6 +115,25 @@ public class HomeActivity extends AppCompatActivity {
                 temperatureNumber.setText("N/A");
             }
         });
+
+
+        RelativeLayout graphNavi  = findViewById(R.id.graphNavi);
+        graphNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+
+        RelativeLayout personalNavi  = findViewById(R.id.personalNavi);
+        personalNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, Profile.class);
+                intent.putExtra("user_token", userToken);
+
         mapNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,22 +147,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Open the MapActivity when the "Map" icon is clicked
                 Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-        graphNavi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open the MapActivity when the "Map" icon is clicked
-                Intent intent = new Intent(HomeActivity.this, GraphActivity.class);
-                startActivity(intent);
-            }
-        });
-        personalNavi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open the MapActivity when the "Map" icon is clicked
-                Intent intent = new Intent(HomeActivity.this, UserInformationActivity.class);
                 startActivity(intent);
             }
         });

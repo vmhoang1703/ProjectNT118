@@ -19,9 +19,9 @@
             android:exported="false" />
         <activity
             android:name=".GraphActivity"
-            android:exported="true" />
+            android:exported="false"/>
         <activity
-            android:name=".UserInformationActivity"
+            android:name=".Profile"
             android:exported="false" />
         <activity
             android:name=".ResetPwdActivity"

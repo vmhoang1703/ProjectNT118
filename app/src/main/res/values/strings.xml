@@ -84,8 +84,8 @@
     <string name="user_info_text_en">Your information</string>
     <string name="profile_en">Profile</string>
     <string name="user_info_text_vn">Đăng ký!</string>
-    <string name="edit_en">Edit</string>
-    <string name="edit_vn">Chỉnh sửa</string>
+    <string name="logout_en">Logout</string>
+    <string name="logout_vn">Đăng xuất</string>
     <string name="firstname_en">Firstname</string>
     <!--    <string name="edit_vn">Chỉnh sửa</string>-->
     <string name="lastname_en">Lastname</string>
@@ -98,15 +98,35 @@
     <!--    Graph-->
     <string name="graph_en">Graph</string>
     <string name="show_en">Show</string>
+    <string name="homeNavi_en">Home</string>
+    <string name="graphNavi_en">Graph</string>
+    <string name="mapNavi_en">Map</string>
+    <string name="profileNavi_en">Profile</string>
+    <string name="degreeC">°C</string>
+    <string name="rainfall_en">RAINFALL</string>
+    <string name="mm">mm</string>
+    <string name="temperature_en">TEMPERATURE</string>
+    <string name="humidity_en">HUMIDITY</string>
+    <string name="percent">%</string>
+    <string name="wind_direction_en">WIND DIRECTION</string>
+    <string name="degrees_en">degrees</string>
+    <string name="wind_speed_en">WIND SPEED</string>
+    <string name="m_s">m/s</string>
+    <string name="starting_date_en">Starting date</string>
+    <string name="ending_date_en">Ending date</string>
     <string-array name="attributes_array">
         <item>Select Attribute</item>
         <item>Temperature</item>
         <item>Humidity</item>
+        <item>Rainfall</item>
+        <item>Wind direction</item>
+        <item>Wind speed</item>
     </string-array>
 
     <string-array name="timeframe_array">
         <item>Select Timeframe</item>
         <item>Day</item>
-        <item>Hour</item>
+        <item>Month</item>
+        <item>Year</item>
     </string-array>
 </resources>
