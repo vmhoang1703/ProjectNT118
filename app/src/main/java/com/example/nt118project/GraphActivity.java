@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.nt118project.Adapter.CustomSpinnerAdapter;
+
 import com.example.nt118project.request.GraphRequestBody;
 import com.example.nt118project.response.GraphResponse;
 import com.example.nt118project.util.APIClient;
@@ -53,12 +54,41 @@ public class GraphActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
-
+        RelativeLayout mapNavi = findViewById(R.id.mapNavi);
+        RelativeLayout homeNavi = findViewById(R.id.homeNavi);
+        RelativeLayout graphNavi = findViewById(R.id.graphNavi);
         RelativeLayout personalNavi = findViewById(R.id.personalNavi);
+        graphNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GraphActivity.this, GraphActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+
+        mapNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(GraphActivity.this, MapActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+        homeNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(GraphActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         personalNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GraphActivity.this, Profile.class);
+                Intent intent = new Intent(GraphActivity.this, ProfileActivity.class);
+                intent.putExtra("user_token", userToken);
                 startActivity(intent);
             }
         });

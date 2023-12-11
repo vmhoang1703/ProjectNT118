@@ -91,7 +91,6 @@
     <string name="lastname_en">Lastname</string>
     <!--    <string name="edit_vn">Chỉnh sửa</string>-->
 
-
     <!--    Home-->
     <string name="hi_en">Hi,</string>
 
@@ -119,8 +118,8 @@
         <item>Temperature</item>
         <item>Humidity</item>
         <item>Rainfall</item>
-        <item>Wind direction</item>
-        <item>Wind speed</item>
+        <!--        <item>Wind direction</item>-->
+        <!--        <item>Wind speed</item>-->
     </string-array>
 
     <string-array name="timeframe_array">

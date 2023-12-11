@@ -11,6 +11,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 import com.example.nt118project.request.GraphRequestBody;
+import com.example.nt118project.response.Asset.Asset;
 import com.example.nt118project.response.GraphResponse;
 import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.response.LoginResponse;
@@ -42,7 +43,7 @@ public interface APIInterface {
     );
     @GET("api/master/asset/{assetID}")
     Call<AssetResponse> getAsset(@Path("assetID") String assetID, @Header("Authorization") String auth);
-
+    Call<Asset> getAsset1(@Path("assetID") String assetID, @Header("Authorization") String auth);
     @POST("api/master/asset/datapoint/{assetId}/attribute/{attributeName}")
     Call<JsonArray> postData(
             @Path("assetId") String assetId,
@@ -55,7 +56,5 @@ public interface APIInterface {
     Call<MapResponse> getMap(
             @Header("Authorization") String auth
     );
-    @GET("api/master/map")
-    Call<Map> getMap();
 
 }

@@ -7,9 +7,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.nt118project.response.AssetResponse;
+
 import com.example.nt118project.response.UserResponse;
 import com.example.nt118project.util.APIClient;
 import com.example.nt118project.util.APIInterface;
@@ -18,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Profile extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     String userToken;
     TextView showFirstname, showLastname, showUsername, showEmail, usernameText;
     @SuppressLint("SetTextI18n")
@@ -32,6 +33,44 @@ public class Profile extends AppCompatActivity {
         showUsername = findViewById(R.id.showUsername);
         showEmail = findViewById(R.id.showEmail);
         usernameText = findViewById(R.id.usernameText);
+        RelativeLayout mapNavi = findViewById(R.id.mapNavi);
+        RelativeLayout homeNavi = findViewById(R.id.homeNavi);
+        RelativeLayout graphNavi = findViewById(R.id.graphNavi);
+        RelativeLayout personalNavi = findViewById(R.id.personalNavi);
+        graphNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, GraphActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+
+        mapNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(ProfileActivity.this, MapActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+        homeNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        personalNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -61,7 +100,7 @@ public class Profile extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Profile.this, LoginActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

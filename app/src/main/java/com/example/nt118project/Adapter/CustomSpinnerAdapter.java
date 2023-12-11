@@ -59,4 +59,3 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
         return view;
     }
 }
-

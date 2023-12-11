@@ -34,29 +34,30 @@ public class RegisterActivity extends BaseActivity {
     private EditText email;
     private EditText pwd;
     private EditText rePwd;
-    private ImageButton languageButton;
     private TextView backText;
     private TextView signupBtn;
-    private TextView welcomeText, signupText, usernameText, emailText, passwordText, cfPasswordText, typeHintText, signupUppreText;
-    private boolean isEnglish = true;
-    private FirebaseAuth mAuth;
+    private TextView typeHintText;
+//    private boolean isEnglish = true;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 //        setupLanguageButton(R.id.languageBtn);
-        languageButton = findViewById(R.id.languageButton);
-        welcomeText = findViewById(R.id.welcome_text);
-        signupText = findViewById(R.id.signup_text);
-        usernameText = findViewById(R.id.textViewUsername);
-        emailText = findViewById(R.id.textViewEmail);
-        passwordText = findViewById(R.id.textViewPassword);
-        cfPasswordText = findViewById(R.id.textViewConfirmPassword);
-        signupUppreText = findViewById(R.id.signup_btn);
+        ImageButton languageButton = findViewById(R.id.languageButton);
+        ImageView cloud = findViewById(R.id.cloud);
+        TextView welcomeText = findViewById(R.id.welcome_text);
+        TextView usernameText = findViewById(R.id.textViewUsername);
+        TextView emailText = findViewById(R.id.textViewEmail);
+        TextView passwordText = findViewById(R.id.textViewPassword);
+        TextView cfPasswordText = findViewById(R.id.textViewConfirmPassword);
+
 
         //Back button
+        back= findViewById(R.id.back_arrow);
         back.setOnClickListener(v -> handleBackButtonClick());
+        backText= findViewById(R.id.back_text);
         backText.setOnClickListener(v -> handleBackButtonClick());
 
         //Input data
@@ -68,6 +69,10 @@ public class RegisterActivity extends BaseActivity {
         //Sign up button
         signUp = findViewById(R.id.signup_btn);
         signUp.setOnClickListener(view -> {
+            if(username.getText().toString().trim().isEmpty() || email.getText().toString().trim().isEmpty() || pwd.getText().toString().trim().isEmpty() || rePwd.getText().toString().trim().isEmpty()){
+                Toast.makeText(this, "Fill in the blank", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent();
             intent.setClass(this, RegisterEmbed.class);
 
@@ -79,22 +84,20 @@ public class RegisterActivity extends BaseActivity {
             startActivity(intent);
         });
                 // Đặt sự kiện khi nhấn vào nút ngôn ngữ
-        languageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Đảm bảo rằng ngôn ngữ được chuyển đổi
-                isEnglish = !isEnglish;
+//        languageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Đảm bảo rằng ngôn ngữ được chuyển đổi
+//                isEnglish = !isEnglish;
+//
+//                // Thay đổi ngôn ngữ toàn cục
+//                String languageCode = isEnglish ? "en" : "vi";
+//                setLocale(languageCode);
+//
+//
+//            }
+//        });
 
-                // Thay đổi ngôn ngữ toàn cục
-                String languageCode = isEnglish ? "en" : "vi";
-                setLocale(languageCode);
-
-                updateUI();
-            }
-        });
-
-        // Gọi hàm để đặt ngôn ngữ mặc định
-        updateUI();
     }
     private void setLocale(String languageCode) {
         Locale locale = new Locale(languageCode);
@@ -105,39 +108,6 @@ public class RegisterActivity extends BaseActivity {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
-    private void updateUI() {
-        // Hình ảnh của cờ mới
-        Drawable[] layers = new Drawable[2];
-        layers[0] = languageButton.getDrawable();
-        layers[1] = getResources().getDrawable(isEnglish ? R.drawable.english : R.drawable.vietnamese);
-
-        TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
-        languageButton.setImageDrawable(transitionDrawable);
-
-        // Chạy hiệu ứng crossfade cho ImageButton
-        transitionDrawable.startTransition(400); // 500 milliseconds (adjust as needed)
-
-        // Ẩn và hiển thị các TextView với animation crossfade
-        if (isEnglish) {
-            fadeView(backText, R.anim.fade_out, R.string.back_en);
-            fadeView(welcomeText, R.anim.fade_out, R.string.welcome_text_en);
-            fadeView(signupText, R.anim.fade_out, R.string.signup_text_en);
-            fadeView(usernameText, R.anim.fade_out, R.string.username_text_en);
-            fadeView(emailText, R.anim.fade_out, R.string.email_text);
-            fadeView(passwordText, R.anim.fade_out, R.string.password_text_en);
-            fadeView(cfPasswordText, R.anim.fade_out, R.string.confirm_password_text_en);
-            fadeView(signupUppreText, R.anim.fade_out, R.string.signup_upper_en);
-        } else {
-            fadeView(backText, R.anim.fade_out, R.string.back_vn);
-            fadeView(welcomeText, R.anim.fade_out, R.string.welcome_text_vn);
-            fadeView(signupText, R.anim.fade_out, R.string.signup_text_vn);
-            fadeView(usernameText, R.anim.fade_out, R.string.username_text_vn);
-            fadeView(emailText, R.anim.fade_out, R.string.email_text);
-            fadeView(passwordText, R.anim.fade_out, R.string.password_text_vn);
-            fadeView(cfPasswordText, R.anim.fade_out, R.string.confirm_password_text_vn);
-            fadeView(signupUppreText, R.anim.fade_out, R.string.signup_upper_vn);
-        }
-    }
 
     private void fadeView(final TextView textView, int animResource, final int textResource) {
         Animation animation = AnimationUtils.loadAnimation(this, animResource);

@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.nt118project.map.MapFragment;
 import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.util.APIClient;
 import com.example.nt118project.util.APIInterface;
@@ -22,8 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
-    TextView home_username;
     public static String token;
+    TextView home_username;
     TextView temperatureNumber, temperatureFigure, rainfallFigure, humidityFigure, windDirectionFigure, windSpeedFigure, placeText;
 
     @SuppressLint("SetTextI18n")
@@ -59,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Gọi API để lấy dữ liệu temperature
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<AssetResponse> call = apiInterface.getAsset(assetId,"Bearer " + userToken);
+        Call<AssetResponse> call = apiInterface.getAsset(assetId, "Bearer " + userToken);
         call.enqueue(new Callback<AssetResponse>() {
             @Override
             public void onResponse(@NonNull Call<AssetResponse> call, @NonNull Response<AssetResponse> response) {
@@ -117,7 +116,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-        RelativeLayout graphNavi  = findViewById(R.id.graphNavi);
         graphNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,18 +125,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        RelativeLayout personalNavi  = findViewById(R.id.personalNavi);
+
         personalNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, Profile.class);
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                 intent.putExtra("user_token", userToken);
-
+                startActivity(intent);
+            }
+        });
         mapNavi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Open the MapActivity when the "Map" icon is clicked
-                Intent intent = new Intent(HomeActivity.this, MapFragment.class);
+                Intent intent = new Intent(HomeActivity.this, MapActivity.class);
+                intent.putExtra("user_token", userToken);
                 startActivity(intent);
             }
         });
