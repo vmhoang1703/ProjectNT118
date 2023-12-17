@@ -38,6 +38,11 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Configuration.getInstance().load(getApplicationContext(),
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            userToken = intent.getStringExtra("user_token");
+        }
         setContentView(R.layout.activity_map);
         RelativeLayout mapNavi = findViewById(R.id.mapNavi);
         RelativeLayout homeNavi = findViewById(R.id.homeNavi);
@@ -78,10 +83,6 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            userToken = intent.getStringExtra("user_token");
-        }
         // Load osmdroid configuration
         Configuration.getInstance().load(this, getPreferences(MODE_PRIVATE));
 
@@ -95,17 +96,7 @@ public class MapActivity extends AppCompatActivity {
         map.getController().setZoom(16.0);
         map.getController().setCenter(new org.osmdroid.util.GeoPoint(10.87, 106.80324));
 
-
-        // Add attribution text (if needed)
-
-
-//
-//        Intent intent = getIntent();
-//        if (intent != null) {
-//            userToken = intent.getStringExtra("user_token");
-//        }
-//
-//        fetchDataFromApi();
+        fetchDataFromApi();
     }
 
     private void fetchDataFromApi() {

@@ -18,7 +18,10 @@ import com.example.nt118project.response.LoginResponse;
 import com.example.nt118project.response.Map;
 import com.example.nt118project.response.MapResponse;
 import com.example.nt118project.response.UserResponse;
+import com.example.nt118project.response.UserRoles;
 import com.google.gson.JsonArray;
+
+import java.util.List;
 
 public interface APIInterface {
     @POST("auth/realms/master/protocol/openid-connect/token")
@@ -41,6 +44,22 @@ public interface APIInterface {
     Call<UserResponse> getUser(
             @Header("Authorization") String authToken
     );
+    @PUT("api/master/user/master/userRoles/{userId}")
+    Call<Void> registerUserRole(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept,
+            @Header("Content-Type") String contentType,
+            @Path("userId") String userID,
+            @Body List<RegisterUserBody> body
+    );
+    @PUT("api/master/user/master/userRealmRoles/{userId}")
+    Call<Void> registerUserRealmRole(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept,
+            @Header("Content-Type") String contentType,
+            @Path("userId") String userID,
+            @Body List<RegisterUserBody> body
+    );
     @GET("api/master/asset/{assetID}")
     Call<AssetResponse> getAsset(@Path("assetID") String assetID, @Header("Authorization") String auth);
     Call<Asset> getAsset1(@Path("assetID") String assetID, @Header("Authorization") String auth);
@@ -52,9 +71,11 @@ public interface APIInterface {
             @Body GraphRequestBody requestBody
     );
 
-    @GET("/api/master/map/js")
+    @GET("api/master/map/js")
     Call<MapResponse> getMap(
             @Header("Authorization") String auth
     );
+    @GET("api/master/user/userRoles")
+    Call<JsonArray> getUserRoles(@Header("Authorization") String auth);
 
 }

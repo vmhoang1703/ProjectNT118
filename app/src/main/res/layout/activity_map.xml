@@ -10,12 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true"
+        android:layout_above="@+id/navi"
         android:focusable="true"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
 
     </org.osmdroid.views.MapView>
     <RelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/navi"
         android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/menu_bg">

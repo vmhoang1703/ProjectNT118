@@ -1,0 +1,45 @@
+<!-- Để giảm số lượng nested layouts, đã chuyển từ RelativeLayout sang LinearLayout -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_view"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="10dp"
+        android:src="@drawable/user_icon" />
+
+    <TextView
+        android:id="@+id/usroles_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:text="@string/name"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/usroles_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic|bold" />
+
+    <TextView
+        android:id="@+id/usroles_assigned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/assigned"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic|bold" />
+</LinearLayout>

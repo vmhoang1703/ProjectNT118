@@ -44,6 +44,7 @@
     <string name="welcome_back_text_vn">Chào mừng trở lại,</string>
     <string name="signin1_text_en">Sign in!</string>
     <string name="signin1_text_vn">Đăng nhập!</string>
+    <string name="user_role">USER ROLES</string>
     <string name="ForgotPassword_en">
         <a href="">
             <u>Forgot your password?</u>
@@ -112,7 +113,10 @@
     <string name="wind_speed_en">WIND SPEED</string>
     <string name="m_s">m/s</string>
     <string name="starting_date_en">Starting date</string>
+    <string name="name">Name</string>
     <string name="ending_date_en">Ending date</string>
+    <string name="assigned">Assigned:</string>
+    <string name="description">Description:</string>
     <string-array name="attributes_array">
         <item>Select Attribute</item>
         <item>Temperature</item>

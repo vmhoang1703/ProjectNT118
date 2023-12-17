@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nt118project.util.RegisterUserBody;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -51,6 +52,8 @@ import com.example.nt118project.response.UserResponse;
 import com.example.nt118project.util.APIClient;
 import com.example.nt118project.util.APIInterface;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -134,8 +137,17 @@ public class LoginActivity extends BaseActivity {
                                 editor.putString("realm", response.body().getRealm());
                                 editor.putString("realmId", response.body().getRealmId());
                                 editor.putString("username", response.body().getUsername());
+                                editor.putLong("createdOn", response.body().getCreatedOn());
+                                editor.putString("firstname", response.body().getFirstName());
+                                editor.putString("lastname", response.body().getLastName());
+                                editor.putString("password", pwd);
                                 editor.putString("user_token", userToken);
                                 editor.apply();
+
+                                //Register new user
+                                if(!response.body().getUsername().equals("admin")){
+                                    registerNewUser(response.body().getId());
+                                }
                                 //Start HomeActivity
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -186,6 +198,64 @@ public class LoginActivity extends BaseActivity {
             }
         });
         updateUI();
+    }
+    private void registerNewUser(String userID) {
+        List<RegisterUserBody> body = new ArrayList<>();
+        body.add(new RegisterUserBody("92ce7735-e0a1-48bd-a9a0-1207a57432dd", "read:map", "View map", false, true));
+        body.add(new RegisterUserBody("27737d27-3151-4f54-8efd-61dfdeabd673", "write", "Write all data", true, false));
+        body.add(new RegisterUserBody("c698ac49-58ce-4a1a-9f0b-114571234f54", "read", "Read all data", true, false));
+        body.add(new RegisterUserBody("eb066551-f084-48c3-8d64-2a8e32ee7627", "read:rules", "Read rulesets", false, true));
+        body.add(new RegisterUserBody("29962812-abef-4726-b3df-a03aaa34b77b", "read:insights", "Read dashboards", false, true));
+        body.add(new RegisterUserBody("5e87d283-af22-45fa-9f0b-34db57872b4e", "read:assets", "Read asset data", false, true));
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<Void> call = apiInterface.registerUserRole(
+                "Bearer " + getSharedPreferences("PREF", MODE_PRIVATE).getString("admin_token", null),
+                "*/*",
+                "application/json",
+                userID,
+                body);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if(response.isSuccessful()){
+                    Log.i("Register", "Register new user successfully");
+                }
+                else{
+                    Log.i("Register", "Register new user failed");
+                }
+            }
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+
+            }
+        });
+
+        List<RegisterUserBody> body2 = new ArrayList<>();
+        body2.add(new RegisterUserBody("a060bea1-5d1c-4c3e-b3bd-4cd64fea667b", "default-roles-master", "${role_default-roles}", true, true));
+        body2.add(new RegisterUserBody("4d8b4abc-7f6d-4f80-9879-d6eecf5e98b9", "uma_authorization", "${role_uma_authorization}", false, true));
+        body2.add(new RegisterUserBody("10ac89f3-f1b6-44dd-ad92-0cfdf032974a", "offline_access", "${role_offline-access}", false, true));
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<Void> call2 = apiInterface.registerUserRealmRole(
+                "Bearer " + getSharedPreferences("PREF", MODE_PRIVATE).getString("admin_token", null),
+                "*/*",
+                "application/json",
+                userID,
+                body2);
+        call2.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
+                if(response.isSuccessful()){
+                    Log.i("Register", "Register new user successfully");
+                }
+                else{
+                    Log.i("Register", "Register new user failed");
+                }
+            }
+            @Override
+            public void onFailure(@NonNull Call<Void> call, @NonNull Throwable t) {
+
+            }
+        });
     }
     private void updateUI() {
         if (isEnglish) {

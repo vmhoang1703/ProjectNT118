@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,44 +34,12 @@ public class ProfileActivity extends AppCompatActivity {
         showUsername = findViewById(R.id.showUsername);
         showEmail = findViewById(R.id.showEmail);
         usernameText = findViewById(R.id.usernameText);
+        ImageView role= findViewById(R.id.avatar);
         RelativeLayout mapNavi = findViewById(R.id.mapNavi);
         RelativeLayout homeNavi = findViewById(R.id.homeNavi);
         RelativeLayout graphNavi = findViewById(R.id.graphNavi);
         RelativeLayout personalNavi = findViewById(R.id.personalNavi);
-        graphNavi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, GraphActivity.class);
-                intent.putExtra("user_token", userToken);
-                startActivity(intent);
-            }
-        });
 
-        mapNavi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open the MapActivity when the "Map" icon is clicked
-                Intent intent = new Intent(ProfileActivity.this, MapActivity.class);
-                intent.putExtra("user_token", userToken);
-                startActivity(intent);
-            }
-        });
-        homeNavi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open the MapActivity when the "Map" icon is clicked
-                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-        personalNavi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-                intent.putExtra("user_token", userToken);
-                startActivity(intent);
-            }
-        });
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -103,6 +72,47 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        graphNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, GraphActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+
+        mapNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the MapActivity when the "Map" icon is clicked
+                Intent intent = new Intent(ProfileActivity.this, MapActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+        homeNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        personalNavi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
+            }
+        });
+        role.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, UserRoleActivity.class);
+                intent.putExtra("user_token", userToken);
+                startActivity(intent);
             }
         });
     }

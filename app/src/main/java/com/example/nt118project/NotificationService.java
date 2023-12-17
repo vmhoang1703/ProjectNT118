@@ -75,7 +75,7 @@ public class NotificationService extends Service {
         Notification notification = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setContentTitle("Data fetched")
                 .setContentText(content)
-                .setSmallIcon(R.mipmap.ic_launcher) // Replace with your own icon
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
