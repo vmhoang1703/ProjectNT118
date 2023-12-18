@@ -13,6 +13,8 @@ public class AssetResponse {
     public static class Attributes {
         @SerializedName("temperature")
         private MeasurementDouble temperature;
+        @SerializedName("manufacturer")
+        private MeasurementString manufacturer;
 
         @SerializedName("rainfall")
         private MeasurementDouble rainfall;
@@ -30,7 +32,10 @@ public class AssetResponse {
         private MeasurementString place;
 
         public MeasurementDouble getTemperature() {
-            return temperature;
+                return temperature;
+            }
+        public MeasurementString getManufacturer() {
+            return manufacturer;
         }
 
         public MeasurementDouble getRainfall() {

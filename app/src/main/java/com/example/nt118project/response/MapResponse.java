@@ -4,15 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-
 public class MapResponse {
     private Options options;
     private String attribution;
     private String format;
     private String type;
     private List<String> tiles;
-
-    // Các phương thức getter và setter ở đây
 
     public Options getOptions() {
         return options;
@@ -55,9 +52,8 @@ public class MapResponse {
     }
 
     public static class Options {
+        @SerializedName("default")
         private Default defaultOption;
-
-        // Các phương thức getter và setter ở đây
 
         public Default getDefault() {
             return defaultOption;
@@ -66,6 +62,7 @@ public class MapResponse {
         public void setDefault(Default defaultOption) {
             this.defaultOption = defaultOption;
         }
+
         public static class Default {
             private List<Double> center;
             private List<Double> bounds;
@@ -74,8 +71,6 @@ public class MapResponse {
             private int maxZoom;
             private boolean boxZoom;
             private String geocodeUrl;
-
-            // Các phương thức getter và setter ở đây
 
             public List<Double> getCenter() {
                 return center;
@@ -135,4 +130,3 @@ public class MapResponse {
         }
     }
 }
-

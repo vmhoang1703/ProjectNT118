@@ -15,7 +15,6 @@ import com.example.nt118project.response.Asset.Asset;
 import com.example.nt118project.response.GraphResponse;
 import com.example.nt118project.response.AssetResponse;
 import com.example.nt118project.response.LoginResponse;
-import com.example.nt118project.response.Map;
 import com.example.nt118project.response.MapResponse;
 import com.example.nt118project.response.UserResponse;
 import com.example.nt118project.response.UserRoles;
