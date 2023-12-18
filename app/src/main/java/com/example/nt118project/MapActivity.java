@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -151,12 +153,17 @@ public class MapActivity extends AppCompatActivity {
 
                             // Add a marker at the specified location
                             Marker marker = new Marker(mapView);
-                            int iconResource = R.drawable.weather_partly_cloudy;
+                            int iconResource = R.drawable.img;
                             @SuppressLint("UseCompatLoadingForDrawables") Drawable icon = getResources().getDrawable(iconResource);
-                            marker.setImage(icon);
+                            // Đặt kích thước mới cho ảnh
+                            int newWidth = 50; // Kích thước mới của ảnh (đơn vị: pixel)
+                            int newHeight = 50;
+                            Drawable resizedIcon = resizeDrawable(icon, newWidth, newHeight);
+
+                            // Đặt ảnh mới cho Marker
+                            marker.setIcon(resizedIcon);
                             marker.setPosition(geoPoint);
                             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-                            marker.setIcon(getDrawable(R.drawable.weather_partly_cloudy));
                             marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
                                 @Override
                                 public boolean onMarkerClick(Marker marker, MapView mapView) {
@@ -204,6 +211,7 @@ public class MapActivity extends AppCompatActivity {
                     Dialog dialog = new Dialog(current_view.getContext());
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     dialog.setContentView(R.layout.weather_asset_marker);
+                    dialog.getWindow().setBackgroundDrawableResource(R.drawable.shadowbtn_blue);
                     Objects.requireNonNull(dialog.getWindow()).setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                     dialog.getWindow().setGravity(Gravity.BOTTOM);
                     dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
@@ -212,11 +220,7 @@ public class MapActivity extends AppCompatActivity {
                     TextView manufacturer = dialog.findViewById(R.id.txtview_manufacturer_value);
                     TextView place = dialog.findViewById(R.id.txtview_place_value);
                     TextView rainfall_value = dialog.findViewById(R.id.txtview_rainfall_value);
-                    TextView sun_altitude = dialog.findViewById(R.id.txtview_sunaltitude_value);
-                    TextView sun_zenith = dialog.findViewById(R.id.txtview_zenith_value);
-                    TextView tags = dialog.findViewById(R.id.txtview_tags_value);
                     TextView temp_value = dialog.findViewById(R.id.txtview_temperature_value);
-                    TextView uv_index = dialog.findViewById(R.id.txtview_uvindex_value);
                     TextView wind_direction = dialog.findViewById(R.id.txtview_winddirection_value);
                     TextView wind_speed = dialog.findViewById(R.id.txtview_windspeed_value);
 
@@ -254,7 +258,7 @@ public class MapActivity extends AppCompatActivity {
                     place.setText(placeStringValue);
 
 
-                    title_textview.setText(title);
+                    title_textview.setText("Weather information");
                     dialog.show();
 
                 } else {
@@ -268,5 +272,10 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private Drawable resizeDrawable(Drawable drawable, int width, int height) {
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
+        return new BitmapDrawable(getResources(), resizedBitmap);
     }
 }

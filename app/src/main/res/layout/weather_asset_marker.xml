@@ -3,26 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/dialog_bg"
+    android:background="@drawable/shadowbtn_blue"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
+        android:text="Weather information"
         android:gravity="center"
         android:textSize="25sp"
-        android:id="@+id/txtview_title"/>
+        android:id="@+id/txtview_title"
+        android:paddingTop="30dp"
+        android:paddingBottom="15dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:paddingBottom="30dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="30dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,37 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sun altitude"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sun azimuth"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sun irradiance"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sun zenith"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tags"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Temperature (°C)"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="UV index"
                 android:textSize="19sp" />
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Wind speed\n    (km/h)"
+                android:text="Wind speed(km/h)"
                 android:textSize="19sp" />
         </LinearLayout>
         <LinearLayout
@@ -96,7 +70,8 @@
             android:layout_weight="0.5"
             android:gravity="right"
             android:orientation="vertical"
-            tools:ignore="RtlHardcoded">
+            tools:ignore="RtlHardcoded"
+            android:paddingEnd="30dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -125,43 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="value"
-                android:id="@+id/txtview_sunaltitude_value"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value"
-                android:id="@+id/txtview_azimuth_value"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value"
-                android:id="@+id/txtview_sunirradiance_value"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value"
-                android:id="@+id/txtview_zenith_value"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value"
-                android:id="@+id/txtview_tags_value"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value"
                 android:id="@+id/txtview_temperature_value"
-                android:textSize="19sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="value"
-                android:id="@+id/txtview_uvindex_value"
                 android:textSize="19sp" />
             <TextView
                 android:layout_width="wrap_content"
